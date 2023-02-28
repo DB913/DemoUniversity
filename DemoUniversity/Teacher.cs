@@ -3,10 +3,9 @@
 
 namespace DemoUniversity
 {
-    public class Teacher : Human
+    public class Teacher : Person
     {
-        public Kafedra kafedra;
-        public Predmet predmet;
-        public Guid id;
+        public Department Department { get; set; }
+        public Discipline Discipline { get; set; }
     }
 }

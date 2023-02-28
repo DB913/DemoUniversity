@@ -3,10 +3,9 @@ using System;
 
 namespace DemoUniversity
 {
-    public class Student : Human
+    public class Student : Person
     {
-        public Guid id;
-        public string speciality;
-        public int kurs;
+        public string Speciality { get; set; }
+        public int Kurs { get; set; }
     }
 }
