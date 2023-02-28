@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8c12GtbDAc32L0RlWAfdJidYlLX9M+Vdy45y7oqb/rJPPjNtRrtffobCkVtFjnrzvZjqzAw5xfh/YWx1kzqGww==",
+  "dgSpecHash": "nNOmdmvqB8mV9i2OVO5EPQ2Kqql1rMLMNCWBHpxiFz9vzYDpsmKCqX/aNacoqLdQ1EIA8Cls5MjI1putkPlabA==",
   "success": true,
   "projectFilePath": "C:\\Users\\d.bradu\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\d.bradu\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
