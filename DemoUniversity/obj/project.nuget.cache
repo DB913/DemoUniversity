@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "nNOmdmvqB8mV9i2OVO5EPQ2Kqql1rMLMNCWBHpxiFz9vzYDpsmKCqX/aNacoqLdQ1EIA8Cls5MjI1putkPlabA==",
+  "dgSpecHash": "bt36LHUqRR0zpDdg0EoxXuJfBz/URgzGKaTsBpERVWZHSfn6+7PGmZNRiJzHm3sBd5qbwgGTp0D3WLp4lcmixg==",
   "success": true,
   "projectFilePath": "C:\\Users\\d.bradu\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\d.bradu\\.nuget\\packages\\faker.net\\2.0.154\\faker.net.2.0.154.nupkg.sha512",
+    "C:\\Users\\d.bradu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\d.bradu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

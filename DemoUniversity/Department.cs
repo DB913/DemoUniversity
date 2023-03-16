@@ -7,5 +7,35 @@ namespace DemoUniversity
         public string Name { get; set; }
         public string ShortName { get; set; }
         public Guid Id { get; set; }
+
+        private void SetName(string name)
+        {
+            if (name.Length > 16 && name.Length < 100)
+            {
+                Name = name;
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+        
+        private void SetShortName(string shortName)
+        {
+            if (shortName.Length > 2 && shortName.Length < 5)
+            {
+                ShortName = shortName;
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+
+        public Department(string name, string shortName)
+        {
+            SetName(name);
+            SetShortName(shortName);
+        }
     }
 }
