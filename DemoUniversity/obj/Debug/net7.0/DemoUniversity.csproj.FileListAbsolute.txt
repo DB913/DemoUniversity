@@ -1,0 +1,12 @@
+D:\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.deps.json
+D:\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.dll
+D:\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.pdb
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.csproj.AssemblyReference.cache
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.GeneratedMSBuildEditorConfig.editorconfig
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.AssemblyInfoInputs.cache
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.AssemblyInfo.cs
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.csproj.CoreCompileInputs.cache
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.dll
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\refint\DemoUniversity.dll
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.pdb
+D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\ref\DemoUniversity.dll

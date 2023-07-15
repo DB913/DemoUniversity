@@ -228,31 +228,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\d.bradu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\d.bradu\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
+      "projectUniqueName": "D:\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
       "projectName": "DemoUniversity",
-      "projectPath": "C:\\Users\\d.bradu\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
-      "packagesPath": "C:\\Users\\d.bradu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\d.bradu\\RiderProjects\\DemoUniversity\\DemoUniversity\\obj\\",
+      "projectPath": "D:\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "D:\\DemoUniversity\\DemoUniversity\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\d.bradu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -292,7 +285,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Asus\\.dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

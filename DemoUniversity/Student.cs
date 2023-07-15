@@ -20,11 +20,6 @@ namespace DemoUniversity
             SetKurs(kurs);
         }
 
-        public Student()
-        {
-            
-        }
-
         private void SetSpeciality(string speciality)
         {
             if (speciality.Length > 2 && speciality.Length <10)
