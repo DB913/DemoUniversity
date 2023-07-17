@@ -33,7 +33,7 @@ namespace DemoUniversity
                 LastName = lastName;
             else
             {
-                throw new Exception();
+                throw new Exception("Фамилия должна быть длиной от 2 до 60 символов");
             }
         }
         public void SetFirstName(string firstName)
@@ -42,7 +42,7 @@ namespace DemoUniversity
                  FirstName = firstName;
             else
             {
-                throw new Exception();
+                throw new Exception("Имя должно быть длиной от 2 до 60 символов");
             }
         }
         public void SetMiddleName(string middleName)
@@ -51,7 +51,7 @@ namespace DemoUniversity
                 MiddleName = middleName;
             else
             {
-                throw new Exception();
+                throw new Exception("Отчество должно быть длиной от 2 до 60 символов");
             }
         }
         public void SetAge(int age)
@@ -60,7 +60,7 @@ namespace DemoUniversity
                  Age = age;
             else
             {
-                throw new Exception();
+                throw new Exception("Возраст должен быть длиной от 16 до 150 символов");
             }
         }
         public void SetAddress(string address)
@@ -77,7 +77,7 @@ namespace DemoUniversity
             if (Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$"))
                 Phone = phoneNumber;
             else
-                throw new Exception();
+                throw new Exception("Телефон должен соответствовать формату");
         }
 
     }

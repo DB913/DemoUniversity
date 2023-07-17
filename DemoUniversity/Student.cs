@@ -28,7 +28,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception();
+                throw new Exception("Длина значения специальности должна быть от 2 до 10 символов");
             }
         }
         private void SetKurs(int kurs)
@@ -39,7 +39,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception();
+                throw new Exception("Курс должен быть в диапазоне значения от 1 до 6");
             }
         }
         

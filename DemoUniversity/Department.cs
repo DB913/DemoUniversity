@@ -16,7 +16,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception();
+                throw new Exception("Название кафедры должно быть длиной от 16 до 100 символов");
             }
         }
         
@@ -28,7 +28,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception();
+                throw new Exception("Короткое название кафедры должно быть длиной от 2 до 5 символов");
             }
         }
 

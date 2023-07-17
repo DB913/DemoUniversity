@@ -18,6 +18,11 @@ namespace DemoUniversity
             {
                 Name = name;
             }
+            else
+            {
+                throw new Exception("Название группы должно состоять из паттерна: год начала обучения " +
+                                    "+ короткое название кафедры");
+            }
         }
 
         public Group(string name, string yearStart, string shortNameDepartment,Student students)

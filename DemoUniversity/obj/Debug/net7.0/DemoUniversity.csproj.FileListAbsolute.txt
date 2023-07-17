@@ -10,3 +10,15 @@ D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.dll
 D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\refint\DemoUniversity.dll
 D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.pdb
 D:\DemoUniversity\DemoUniversity\obj\Debug\net7.0\ref\DemoUniversity.dll
+E:\NET\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.deps.json
+E:\NET\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.dll
+E:\NET\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.pdb
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.csproj.AssemblyReference.cache
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.GeneratedMSBuildEditorConfig.editorconfig
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.AssemblyInfoInputs.cache
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.AssemblyInfo.cs
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.csproj.CoreCompileInputs.cache
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.dll
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\refint\DemoUniversity.dll
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.pdb
+E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\ref\DemoUniversity.dll

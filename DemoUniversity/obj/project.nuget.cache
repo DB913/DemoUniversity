@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "O+a/Fi5jfQAIRxqf/4PBKxfpwvmTNmw6yjf2WJN2YHhUhTVE3kTnaEuQ2tRoPJXu7wULCfHAvO/qf1MixdEi7A==",
+  "dgSpecHash": "BAaFQzhpJpHkSYUUzDSPiZ5BgsfXIaHsbHgVYr/pJS7EE+MCzO7z5UbdFXfur/x/twdtINSGE3yBJaly5T45og==",
   "success": true,
-  "projectFilePath": "D:\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
+  "projectFilePath": "E:\\NET\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Asus\\.nuget\\packages\\faker.net\\2.0.154\\faker.net.2.0.154.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\azzzor\\.nuget\\packages\\faker.net\\2.0.154\\faker.net.2.0.154.nupkg.sha512",
+    "C:\\Users\\azzzor\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\azzzor\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

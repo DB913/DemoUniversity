@@ -14,7 +14,7 @@ namespace DemoUniversity
                 Name = name;
             else
             {
-                throw new Exception();
+                throw new Exception("Название дисциплины должно быть длиной от 2 до 60 символов");
             }
         }
 

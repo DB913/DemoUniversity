@@ -1,4 +1,6 @@
 using System.Runtime.InteropServices.JavaScript;
+using System.Text.RegularExpressions;
+using AutoFixture;
 using DemoUniversity;
 
 namespace DemoUniversityTests;
@@ -6,10 +8,8 @@ namespace DemoUniversityTests;
 public class UnitTest1
 {
     [Fact]
-    public void CheckCreateStudent()
+    public void CheckCreateStudentPositiveTest()
     {
-        Random random = new Random();
-
         var lastName = Faker.Name.Last();
         var firstName = Faker.Name.First();
         var middleName = Faker.Name.Middle();
@@ -19,15 +19,31 @@ public class UnitTest1
         var speciality = "doctor";
         var kurs = 4;
         
-        Student student = new Student(lastName, firstName, middleName, address, phone, age, speciality,4);
+        Student student = new Student(lastName, firstName, middleName, address, phone, age, speciality,kurs);
         
         Assert.True(student.LastName == lastName);
         Assert.True(student.FirstName == firstName);
         Assert.True(student.MiddleName == middleName);
         Assert.True(student.Address == address);
         Assert.True(student.Phone == phone);
+        Regex.IsMatch(phone,@"^\+[0-9]{1,3}[0-9]{7,14}$");
         Assert.True(student.Age == age);
+        //Assert.True(age.GetType());
         Assert.True(student.Speciality == speciality);
+        Assert.True(student.Kurs == kurs);
+
 
     }
+
+   /* public void CheckCreateStudentWithAutoFixture()
+    {
+        Fixture fixture = new Fixture();
+
+        Student student = fixture.Create<Student>();
+
+        int expectedNumber = fixture.Create<int>();
+
+        int result = student.Echo(expectedNumber);
+
+    }*/
 }
