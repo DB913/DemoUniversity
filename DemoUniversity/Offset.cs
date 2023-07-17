@@ -10,15 +10,21 @@ namespace DemoUniversity
         public Teacher Teacher { get; set; }
         public Student Student { get; set; }
         public int Grade { get; set; }
-        
-            
-        public Offset(Discipline discipline, Teacher teacher, Student student, int grade )
+
+
+        public Offset(Discipline discipline, Teacher teacher, Student student, int grade)
         {
             Discipline = discipline;
             Teacher = teacher;
             Student = student;
-            Grade = grade;
+            if (grade >= 0 && grade <= 5)
+            {
+                Grade = grade;
+            }
+            else
+            {
+                throw new Exception("Оценка может быть от 0 до 5");
+            }
         }
     }
-
 }

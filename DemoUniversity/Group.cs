@@ -25,10 +25,15 @@ namespace DemoUniversity
             }
         }
 
-        public Group(string name, string yearStart, string shortNameDepartment,Student students)
+        public Group(string name, string yearStart, string shortNameDepartment, Student student)
         {
             SetName(name, yearStart, shortNameDepartment);
-            Students.Add(students);
+            addStudent(student);
+        }
+
+        public void addStudent(Student student)
+        {
+            Students.Add(student);
         }
     }
 }

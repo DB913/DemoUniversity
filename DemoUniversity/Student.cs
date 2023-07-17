@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace DemoUniversity
 {
@@ -8,7 +7,8 @@ namespace DemoUniversity
         public string Speciality { get; set; }
         public int Kurs { get; set; }
 
-        public Student(string lastName, string firstName, string middleName, string address, string phone, int age, string speciality, int kurs) : base(lastName,firstName,middleName,address, phone, age)
+        public Student(string lastName, string firstName, string middleName, string address, string phone, int age,
+            string speciality, int kurs) : base(lastName, firstName, middleName, address, phone, age)
         {
             SetLastName(lastName);
             SetFirstName(firstName);
@@ -22,26 +22,26 @@ namespace DemoUniversity
 
         private void SetSpeciality(string speciality)
         {
-            if (speciality.Length > 2 && speciality.Length <10)
+            if (speciality.Length > 2 && speciality.Length < 10)
             {
-                 Speciality = speciality;
+                Speciality = speciality;
             }
             else
             {
                 throw new Exception("Длина значения специальности должна быть от 2 до 10 символов");
             }
         }
+
         private void SetKurs(int kurs)
         {
             if (kurs >= 1 && kurs <= 6)
             {
-                 Kurs = kurs;
+                Kurs = kurs;
             }
             else
             {
                 throw new Exception("Курс должен быть в диапазоне значения от 1 до 6");
             }
         }
-        
     }
 }
