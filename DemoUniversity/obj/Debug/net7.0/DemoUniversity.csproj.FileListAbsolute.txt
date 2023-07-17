@@ -22,3 +22,15 @@ E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.dll
 E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\refint\DemoUniversity.dll
 E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.pdb
 E:\NET\DemoUniversity\DemoUniversity\obj\Debug\net7.0\ref\DemoUniversity.dll
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.deps.json
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.dll
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\bin\Debug\net7.0\DemoUniversity.pdb
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.csproj.AssemblyReference.cache
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.AssemblyInfoInputs.cache
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.AssemblyInfo.cs
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.csproj.CoreCompileInputs.cache
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.dll
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\refint\DemoUniversity.dll
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\DemoUniversity.pdb
+C:\Users\Asus\RiderProjects\DemoUniversity\DemoUniversity\obj\Debug\net7.0\ref\DemoUniversity.dll

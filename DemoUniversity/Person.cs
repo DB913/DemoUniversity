@@ -22,11 +22,6 @@ namespace DemoUniversity
             Age = age;
         }
 
-        public Person()
-        {
-            
-        }
-
         public void SetLastName(string lastName)
         {
             if (lastName.Length > 2 && lastName.Length < 60)
@@ -69,7 +64,7 @@ namespace DemoUniversity
                  Address = address;
             else
             {
-                throw new Exception();
+                throw new Exception("Длина адреса должна быть от 20 до 150 символов");
             }
         }
         public void SetPhone(string phoneNumber)

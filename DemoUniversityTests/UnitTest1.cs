@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
 using System.Text.RegularExpressions;
 using AutoFixture;
 using DemoUniversity;
@@ -28,11 +27,34 @@ public class UnitTest1
         Assert.True(student.Phone == phone);
         Regex.IsMatch(phone,@"^\+[0-9]{1,3}[0-9]{7,14}$");
         Assert.True(student.Age == age);
-        //Assert.True(age.GetType());
         Assert.True(student.Speciality == speciality);
         Assert.True(student.Kurs == kurs);
-
-
+        
+    }
+    [Fact]
+    public void CheckCreateStudentNegativeTest()
+    {
+        var lastName = "1";
+        var firstName ="1";
+        var middleName = "1";
+        var address = "14534534";
+        var phone = "55555555555";
+        var age = 10;
+        var speciality = "d";
+        var kurs = 7;
+        
+        Student student = new Student(lastName, firstName, middleName, address, phone, age, speciality,kurs);
+        
+        Assert.True(student.LastName == lastName);
+        Assert.True(student.FirstName == firstName);
+        Assert.True(student.MiddleName == middleName);
+        Assert.True(student.Address == address);
+        Assert.True(student.Phone == phone);
+        Regex.IsMatch(phone,@"^\+[0-9]{1,3}[0-9]{7,14}$");
+        Assert.True(student.Age == age);
+        Assert.True(student.Speciality == speciality);
+        Assert.True(student.Kurs == kurs);
+        
     }
 
    /* public void CheckCreateStudentWithAutoFixture()

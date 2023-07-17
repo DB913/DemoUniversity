@@ -228,33 +228,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\azzzor\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\NET\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
       "projectName": "DemoUniversity",
-      "projectPath": "E:\\NET\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
-      "packagesPath": "C:\\Users\\azzzor\\.nuget\\packages\\",
-      "outputPath": "E:\\NET\\DemoUniversity\\DemoUniversity\\obj\\",
+      "projectPath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\azzzor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -294,7 +285,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Asus\\.dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
