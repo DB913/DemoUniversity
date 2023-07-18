@@ -22,7 +22,9 @@ public class DepartmentTest
     {
         var departmentName = "depar";
         var departmentShortName = "D";
+
+        var department = () => new Department(departmentName, departmentShortName);
         
-        Assert.Throws<Exception>(()=>new Department(departmentName, departmentShortName));
+        Assert.Throws<Exception>(department);
     }
 }

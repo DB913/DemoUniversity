@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using Bogus;
 using DemoUniversity.DemoUniversityModels;
+using DemoUniversity.Domain.Exceptions;
 
 namespace DemoUniversityTests.Unit;
 
@@ -40,13 +41,14 @@ public class StudentTest
         var firstName ="1";
         var middleName = "1";
         var address = "14534534";
-        var phone = "55555555555";
+        var phone = "12345678901234";
         var age = 10;
         var speciality = "d";
         var kurs = 7;
+
+        var student = () => new Student(lastName, firstName, middleName, address,phone, age,speciality, kurs);
         
-        Assert.Throws<Exception>(()=>
-            new Student(lastName, firstName, middleName, address,phone,  age,speciality, kurs));
+        Assert.Throws<IncorrectStringException>(()=> student);
     }
     [Theory]
     [InlineData("John", "Smith", "Doe", "123 Main St", 
@@ -56,9 +58,9 @@ public class StudentTest
     public void Constructor_InvalidSpeciality_ThrowsException(string lastName, string firstName, string middleName, 
         string address, string phone, int age, string speciality, int kurs)
     {
-        // Arrange, Act & Assert
-        Assert.Throws<Exception>(() => new Student
-            (lastName, firstName, middleName, address, phone, age, speciality, kurs));
+        var student = () => new Student(lastName, firstName, middleName, address,phone,  age,speciality, kurs);
+
+        Assert.Throws<IncorrectStringLengthException>(student);
     }
 
     [Theory]
@@ -69,9 +71,9 @@ public class StudentTest
     public void Constructor_InvalidKurs_ThrowsException(string lastName, string firstName, string middleName, 
         string address, string phone, int age, string speciality, int kurs)
     {
-        // Arrange, Act & Assert
-        Assert.Throws<Exception>(() => new Student(lastName, firstName, middleName, address, 
-            phone, age, speciality, kurs));
+        var student = () => new Student(lastName, firstName, middleName, address,phone,  age,speciality, kurs);
+
+        Assert.Throws<IncorrectStringLengthException>(student);
     }
    /* public void CheckCreateStudentWithAutoFixture()
     {

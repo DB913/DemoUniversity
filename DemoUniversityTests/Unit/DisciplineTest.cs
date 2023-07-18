@@ -35,6 +35,8 @@ public class DisciplineTest
     {
         string disciplineName = "r";
 
-        Assert.Throws<Exception>(()=>new Discipline(disciplineName));
+        var discipline = () => new Discipline(disciplineName);
+
+        Assert.Throws<Exception>(discipline);
     }
 }

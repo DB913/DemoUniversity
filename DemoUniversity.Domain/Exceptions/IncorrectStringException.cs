@@ -1,14 +1,9 @@
-﻿using System;
+﻿namespace DemoUniversity.Domain.Exceptions;
 
-namespace DemoUniversity.Exceptions;
-
-public class IncorrectStringException : ArgumentException
+public class IncorrectStringException : Exception
 {
-    public string PhoneNumber { get;}
-
-    public IncorrectStringException(string message, string phoneNumber)
+    public IncorrectStringException(string message)
         : base(message)
     {
-        PhoneNumber = phoneNumber;
     }
 }

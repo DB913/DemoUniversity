@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DemoUniversity.Exceptions;
+﻿namespace DemoUniversity.Domain.Exceptions;
 
 public class IncorrectStringLengthException : Exception
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using DemoUniversity.Exceptions;
+using DemoUniversity.Domain.Exceptions;
 
 namespace DemoUniversity.DemoUniversityModels
 {
@@ -83,7 +83,7 @@ namespace DemoUniversity.DemoUniversityModels
             if (Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$"))
                 Phone = phoneNumber;
             else
-                throw new IncorrectStringException("Номер телефона не соответствует формату", phoneNumber);
+                throw new IncorrectStringException("Номер телефона не соответствует формату");
         }
     }
 }
