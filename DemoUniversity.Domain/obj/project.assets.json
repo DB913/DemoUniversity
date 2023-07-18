@@ -1,30 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
-      "DemoUniversity.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/DemoUniversity.Domain.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DemoUniversity.Domain.dll": {}
-        }
-      }
-    }
+    "net7.0": {}
   },
-  "libraries": {
-    "DemoUniversity.Domain/1.0.0": {
-      "type": "project",
-      "path": "../DemoUniversity.Domain/DemoUniversity.Domain.csproj",
-      "msbuildProject": "../DemoUniversity.Domain/DemoUniversity.Domain.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net7.0": [
-      "DemoUniversity.Domain >= 1.0.0"
-    ]
+    "net7.0": []
   },
   "packageFolders": {
     "C:\\Users\\Asus\\.nuget\\packages\\": {}
@@ -32,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
-      "projectName": "DemoUniversity",
-      "projectPath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity.Domain\\DemoUniversity.Domain.csproj",
+      "projectName": "DemoUniversity.Domain",
+      "projectPath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity.Domain\\DemoUniversity.Domain.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity\\obj\\",
+      "outputPath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -50,11 +31,7 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {
-            "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity.Domain\\DemoUniversity.Domain.csproj": {
-              "projectPath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity.Domain\\DemoUniversity.Domain.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

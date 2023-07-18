@@ -7,6 +7,10 @@ namespace DemoUniversity.DemoUniversityModels
     public class Person
     {
         public Guid Id { get; set; }
+        /// <summary>
+        /// Фамилия
+        /// </summary>
+        /// <example>Пупкин</example>
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

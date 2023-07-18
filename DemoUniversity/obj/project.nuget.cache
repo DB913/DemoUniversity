@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xKl2myvRBFGLmSnpGzs2XkJeaW9I32TPg5EuGpefu7ygqbNf4qyFSMYmDOPBxGIZatP+IW68I5Lz7oWuG/pW8A==",
+  "dgSpecHash": "KFP2i6YmE36/g2c9tcW80LJeGZh068dFm02jgDJmg7F9Rrdk97u07kUaL9/v1H0N+JowMNXRwC6Cfs80XC202g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\RiderProjects\\DemoUniversity\\DemoUniversity\\DemoUniversity.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Asus\\.nuget\\packages\\faker.net\\2.0.154\\faker.net.2.0.154.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -11,6 +11,7 @@
 
     <ItemGroup>
         <PackageReference Include="AutoFixture" Version="4.18.0" />
+        <PackageReference Include="Bogus" Version="34.0.2" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
         <PackageReference Include="xunit" Version="2.4.2" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
@@ -24,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DemoUniversity\DemoUniversity.csproj" />
+      <ProjectReference Include="..\DemoUniversity.Domain\DemoUniversity.Domain.csproj" />
     </ItemGroup>
 
 </Project>

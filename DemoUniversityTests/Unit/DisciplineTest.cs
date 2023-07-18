@@ -1,7 +1,6 @@
-﻿using DemoUniversity;
-using DemoUniversity.DemoUniversityModels;
+﻿using DemoUniversity.DemoUniversityModels;
 
-namespace DemoUniversityTests;
+namespace DemoUniversityTests.Unit;
 
 public class DisciplineTest
 {

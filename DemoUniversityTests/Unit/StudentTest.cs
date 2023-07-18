@@ -1,19 +1,20 @@
 using System.Text.RegularExpressions;
-using AutoFixture;
-using DemoUniversity;
+using Bogus;
 using DemoUniversity.DemoUniversityModels;
 
-namespace DemoUniversityTests;
+namespace DemoUniversityTests.Unit;
 
 public class StudentTest
 {
     [Fact]
     public void CreateStudentPositiveTest()
     {
-        var lastName = Faker.Name.Last();
-        var firstName = Faker.Name.First();
-        var middleName = Faker.Name.Middle();
+        var faker = new Faker("ru");
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.Suffix();
         var address = "street Cucueva 20/3. Part 10";
+        faker.Address.FullAddress();
         var phone = "243";
         var age = 25;
         var speciality = "doctor";

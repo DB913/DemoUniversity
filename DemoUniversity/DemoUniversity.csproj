@@ -5,7 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Faker.Net" Version="2.0.154" />
+      <ProjectReference Include="..\DemoUniversity.Domain\DemoUniversity.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DemoUniversityModels\" />
     </ItemGroup>
 
 </Project>
