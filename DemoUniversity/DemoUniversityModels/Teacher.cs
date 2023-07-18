@@ -1,4 +1,5 @@
 ﻿using System;
+using DemoUniversity.DemoUniversityModels;
 
 
 namespace DemoUniversity

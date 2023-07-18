@@ -1,7 +1,6 @@
 ﻿using System;
 
-
-namespace DemoUniversity
+namespace DemoUniversity.DemoUniversityModels
 {
     public class Offset
     {
@@ -23,7 +22,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception("Оценка может быть от 0 до 5");
+                throw new System.Exception("Оценка может быть от 0 до 5");
             }
         }
     }

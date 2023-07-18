@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using DemoUniversity.Exceptions;
 
-namespace DemoUniversity
+namespace DemoUniversity.DemoUniversityModels
 {
     public class Person
     {
@@ -29,7 +30,7 @@ namespace DemoUniversity
                 LastName = lastName;
             else
             {
-                throw new Exception("Фамилия должна быть длиной от 2 до 60 символов");
+                throw new IncorrectStringLengthException("Фамилия должна быть длиной от 2 до 60 символов");
             }
         }
 
@@ -39,7 +40,7 @@ namespace DemoUniversity
                 FirstName = firstName;
             else
             {
-                throw new Exception("Имя должно быть длиной от 2 до 60 символов");
+                throw new IncorrectStringLengthException("Имя должно быть длиной от 2 до 60 символов");
             }
         }
 
@@ -49,7 +50,7 @@ namespace DemoUniversity
                 MiddleName = middleName;
             else
             {
-                throw new Exception("Отчество должно быть длиной от 2 до 60 символов");
+                throw new IncorrectStringLengthException("Отчество должно быть длиной от 2 до 60 символов");
             }
         }
 
@@ -59,7 +60,7 @@ namespace DemoUniversity
                 Age = age;
             else
             {
-                throw new Exception("Возраст должен быть длиной от 16 до 150 символов");
+                throw new IncorrectStringLengthException("Возраст должен быть длиной от 16 до 150 символов");
             }
         }
 
@@ -69,7 +70,7 @@ namespace DemoUniversity
                 Address = address;
             else
             {
-                throw new Exception("Длина адреса должна быть от 20 до 150 символов");
+                throw new IncorrectStringLengthException("Длина адреса должна быть от 20 до 150 символов");
             }
         }
 
@@ -78,7 +79,7 @@ namespace DemoUniversity
             if (Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$"))
                 Phone = phoneNumber;
             else
-                throw new Exception("Телефон должен соответствовать формату");
+                throw new IncorrectStringException("Номер телефона не соответствует формату", phoneNumber);
         }
     }
 }

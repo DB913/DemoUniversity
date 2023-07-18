@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using AutoFixture;
 using DemoUniversity;
+using DemoUniversity.DemoUniversityModels;
 
 namespace DemoUniversityTests;
 
@@ -13,7 +14,7 @@ public class StudentTest
         var firstName = Faker.Name.First();
         var middleName = Faker.Name.Middle();
         var address = "street Cucueva 20/3. Part 10";
-        var phone = "+37377941408";
+        var phone = "243";
         var age = 25;
         var speciality = "doctor";
         var kurs = 4;

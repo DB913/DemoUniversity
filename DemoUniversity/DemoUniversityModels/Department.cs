@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DemoUniversity
+namespace DemoUniversity.DemoUniversityModels
 {
     public class Department
     {
@@ -22,7 +22,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception("Название кафедры должно быть длиной от 16 до 100 символов");
+                throw new System.Exception("Название кафедры должно быть длиной от 16 до 100 символов");
             }
         }
 
@@ -34,7 +34,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception("Короткое название кафедры должно быть длиной от 2 до 5 символов");
+                throw new System.Exception("Короткое название кафедры должно быть длиной от 2 до 5 символов");
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DemoUniversity
+namespace DemoUniversity.DemoUniversityModels
 {
     public class Discipline
     {

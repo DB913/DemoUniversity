@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DemoUniversity
+﻿namespace DemoUniversity.DemoUniversityModels
 {
     public class Student : Person
     {
@@ -28,7 +26,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception("Длина значения специальности должна быть от 2 до 10 символов");
+                throw new System.Exception("Длина значения специальности должна быть от 2 до 10 символов");
             }
         }
 
@@ -40,7 +38,7 @@ namespace DemoUniversity
             }
             else
             {
-                throw new Exception("Курс должен быть в диапазоне значения от 1 до 6");
+                throw new System.Exception("Курс должен быть в диапазоне значения от 1 до 6");
             }
         }
     }

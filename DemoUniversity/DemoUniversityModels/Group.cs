@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Authentication.ExtendedProtection;
-using Faker.Resources;
 
-namespace DemoUniversity
+namespace DemoUniversity.DemoUniversityModels
 {
     public class Group
     {
@@ -21,17 +19,17 @@ namespace DemoUniversity
             else
             {
                 throw new Exception("Название группы должно состоять из паттерна: год начала обучения " +
-                                    "+ короткое название кафедры");
+                                           "+ короткое название кафедры");
             }
         }
 
         public Group(string name, string yearStart, string shortNameDepartment, Student student)
         {
             SetName(name, yearStart, shortNameDepartment);
-            addStudent(student);
+            AddStudent(student);
         }
 
-        public void addStudent(Student student)
+        public void AddStudent(Student student)
         {
             Students.Add(student);
         }

@@ -1,4 +1,5 @@
 ﻿using DemoUniversity;
+using DemoUniversity.DemoUniversityModels;
 
 namespace DemoUniversityTests;
 
