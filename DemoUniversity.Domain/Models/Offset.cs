@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DemoUniversity.Domain.Extensions;
 
-namespace DemoUniversity.DemoUniversityModels
+namespace DemoUniversity.Domain.Models
 {
     public class Offset
     {
@@ -10,19 +10,21 @@ namespace DemoUniversity.DemoUniversityModels
         public Student Student { get; set; }
         public int Grade { get; set; }
 
-
-        public Offset(Discipline discipline, Teacher teacher, Student student, int grade)
+        public Offset(Guid id,Discipline discipline, Teacher teacher, Student student, int grade)
         {
+            ValidateId(id);
+            grade.ValidateRange(1,5);
             Discipline = discipline;
             Teacher = teacher;
             Student = student;
-            if (grade >= 0 && grade <= 5)
+            Grade = grade;
+            Id = id;
+        }
+        private void ValidateId(Guid id)
+        {
+            if (id == default)
             {
-                Grade = grade;
-            }
-            else
-            {
-                throw new System.Exception("Оценка может быть от 0 до 5");
+                throw new ArgumentException();
             }
         }
     }

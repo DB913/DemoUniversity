@@ -1,45 +1,28 @@
-﻿namespace DemoUniversity.DemoUniversityModels
+﻿using DemoUniversity.Domain.Extensions;
+
+namespace DemoUniversity.Domain.Models
 {
     public class Student : Person
     {
-        public string Speciality { get; set; }
-        public int Kurs { get; set; }
+        /// <summary>
+        /// Сущность "специальность" для студента
+        /// </summary>
+        /// <example>в душе не ебу как описать корректно</example>
+        public string Speciality { get; }
+        /// <summary>
+        /// Сущность "курс" для студента
+        /// </summary>
+        /// <example>в душе не ебу как описать корректно</example>
+        public int Course { get; }
 
-        public Student(string lastName, string firstName, string middleName, string address, string phone, int age,
-            string speciality, int kurs) : base(lastName, firstName, middleName, address, phone, age)
+        public Student(Guid id, string lastName, string firstName, string middleName, string address, string phone,
+            int age,
+            string speciality, int course) : base(id, lastName, firstName, middleName, address, phone, age)
         {
-            SetLastName(lastName);
-            SetFirstName(firstName);
-            SetMiddleName(middleName);
-            SetAddress(address);
-            SetPhone(phone);
-            SetAge(age);
-            SetSpeciality(speciality);
-            SetKurs(kurs);
-        }
-
-        private void SetSpeciality(string speciality)
-        {
-            if (speciality.Length > 2 && speciality.Length < 10)
-            {
-                Speciality = speciality;
-            }
-            else
-            {
-                throw new System.Exception("Длина значения специальности должна быть от 2 до 10 символов");
-            }
-        }
-
-        private void SetKurs(int kurs)
-        {
-            if (kurs >= 1 && kurs <= 6)
-            {
-                Kurs = kurs;
-            }
-            else
-            {
-                throw new System.Exception("Курс должен быть в диапазоне значения от 1 до 6");
-            }
+            speciality.ValidateLength(2, 10);
+            course.ValidateRange(1, 6);
+            Speciality = speciality;
+            Course = course;
         }
     }
 }

@@ -1,89 +1,79 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using DemoUniversity.Domain.Exceptions;
+using DemoUniversity.Domain.Extensions;
 
-namespace DemoUniversity.DemoUniversityModels
+namespace DemoUniversity.Domain.Models;
+
+public abstract class Person
 {
-    public class Person
+    public Guid Id { get; set; }
+    /// <summary>
+    /// Фамилия
+    /// </summary>
+    /// <example>Иванов</example>
+    public string LastName { get;}
+    /// <summary>
+    /// Имя
+    /// </summary>
+    /// <example>Сергей</example>
+    public string FirstName { get;}
+    /// <summary>
+    /// Отчество
+    /// </summary>
+    /// <example>Петрович</example>
+    public string MiddleName { get;}
+    /// <summary>
+    /// Адрес
+    /// </summary>
+    /// <example>"str.25 oct. 100/100"</example>
+    public string Address {get;}
+    /// <summary>
+    /// Возраст
+    /// </summary>
+    /// <example>21</example>
+    public int Age { get;}
+    /// <summary>
+    /// Номер телефона
+    /// </summary>
+    /// <example>+37377821213</example>
+    public string Phone { get;}
+
+    protected Person(Guid id, string lastName, string firstName, string middleName, string address, string phone, int age)
     {
-        public Guid Id { get; set; }
-        /// <summary>
-        /// Фамилия
-        /// </summary>
-        /// <example>Пупкин</example>
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string Address { get; set; }
-        public int Age { get; set; }
-        public string Phone { get; set; }
+        ValidateId(id);
+        lastName.ValidateLength();
+        firstName.ValidateLength();
+        middleName.ValidateLength();
+        address.ValidateLength(20,150);
+        age.ValidateRange();
+        ValidatePhoneNumber(phone);
+        LastName = lastName;
+        FirstName = firstName;
+        MiddleName = middleName;
+        Address = address;
+        Phone = phone;
+        Age = age;
+        Id = id;
+    }
 
-        public Person(string lastName, string firstName, string middleName, string address, string phone, int age)
+    private void ValidateId(Guid id)
+    {
+        if (id == default)
         {
-            LastName = lastName;
-            FirstName = firstName;
-            MiddleName = middleName;
-            Address = address;
-            Phone = phone;
-            Age = age;
+            throw new ArgumentException();
         }
+    }
 
-        public void SetLastName(string lastName)
-        {
-            if (lastName.Length > 2 && lastName.Length < 60)
-                LastName = lastName;
-            else
-            {
-                throw new IncorrectStringLengthException("Фамилия должна быть длиной от 2 до 60 символов");
-            }
-        }
+    private static bool CheckRegexForPhoneNumber(string phoneNumber)
+    {
+        return Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$");
+    }
 
-        public void SetFirstName(string firstName)
+    private static void ValidatePhoneNumber(string phoneNumber)
+    {
+        if (!CheckRegexForPhoneNumber(phoneNumber))
         {
-            if (firstName.Length > 2 && firstName.Length < 60)
-                FirstName = firstName;
-            else
-            {
-                throw new IncorrectStringLengthException("Имя должно быть длиной от 2 до 60 символов");
-            }
-        }
-
-        public void SetMiddleName(string middleName)
-        {
-            if (middleName.Length > 2 && middleName.Length < 60)
-                MiddleName = middleName;
-            else
-            {
-                throw new IncorrectStringLengthException("Отчество должно быть длиной от 2 до 60 символов");
-            }
-        }
-
-        public void SetAge(int age)
-        {
-            if (age > 16 && age < 150)
-                Age = age;
-            else
-            {
-                throw new IncorrectStringLengthException("Возраст должен быть длиной от 16 до 150 символов");
-            }
-        }
-
-        public void SetAddress(string address)
-        {
-            if (address.Length > 20 && address.Length < 150)
-                Address = address;
-            else
-            {
-                throw new IncorrectStringLengthException("Длина адреса должна быть от 20 до 150 символов");
-            }
-        }
-
-        public void SetPhone(string phoneNumber)
-        {
-            if (Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$"))
-                Phone = phoneNumber;
-            else
-                throw new IncorrectStringException("Номер телефона не соответствует формату");
+            throw new IncorrectStringException("Номер телефона не соответствует формату");
         }
     }
 }

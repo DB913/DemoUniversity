@@ -3,5 +3,7 @@
 public class IncorrectStringLengthException : Exception
 {
     public IncorrectStringLengthException(string message)
-        : base(message) { }
+        : base(message)
+    {
+    }
 }

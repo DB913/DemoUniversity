@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DemoUniversity.DemoUniversityModels
+﻿namespace DemoUniversity.Domain.Models
 {
     public class Group
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string GroupName { get; set; }
         public List<Student> Students { get; set; }
 
-        private void SetName(string name, string yearStart, string shortNameDepartment)
+        public Group(Guid id,string groupName, string yearStart, string shortNameDepartment,Student? student, List<Student> students)
         {
-            name = yearStart + shortNameDepartment;
-            if (name.Equals(yearStart + shortNameDepartment))
+            ValidateId(id);
+            ValidateGroupName(groupName, yearStart, shortNameDepartment);
+            GroupName = groupName;
+            Students = students;
+            if (student != null) Students = new List<Student>();
+            Id = id;
+        }
+        private void ValidateId(Guid id)
+        {
+            if (id == default)
             {
-                Name = name;
+                throw new ArgumentException();
             }
-            else
+        }
+        private static void ValidateGroupName(string groupName, string yearStart, string shortNameDepartment)
+        {
+            if (groupName != shortNameDepartment + yearStart)
             {
                 throw new Exception("Название группы должно состоять из паттерна: год начала обучения " +
-                                           "+ короткое название кафедры");
+                                    "+ короткое название кафедры");
             }
-        }
-
-        public Group(string name, string yearStart, string shortNameDepartment, Student student)
-        {
-            SetName(name, yearStart, shortNameDepartment);
-            AddStudent(student);
-        }
-
-        public void AddStudent(Student student)
-        {
-            Students.Add(student);
         }
     }
 }
