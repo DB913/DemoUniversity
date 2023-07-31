@@ -1,9 +1,6 @@
-using System;
-using System.Text.RegularExpressions;
 using Bogus;
 using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Models;
-using Person = DemoUniversity.Domain.Models.Person;
 
 namespace DemoUniversityTests.Unit;
 

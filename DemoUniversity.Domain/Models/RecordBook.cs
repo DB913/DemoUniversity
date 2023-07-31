@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace DemoUniversity.Domain.Models;
 
-namespace DemoUniversity.Domain.Models
+public class RecordBook : BaseData<Guid>
 {
-    public class RecordBook
-    {
-        public Guid Id { get; set; }
-        public List<Offset> Offsets { get; set; }
+    /// <summary>
+    /// Студент
+    /// </summary>
+    public Student Student { get; private set; }
 
-        public RecordBook(Guid id, Offset? offset, List<Offset> offsets)
-        {
-            ValidateId(id);
-            Id = id;
-            Offsets = offsets;
-            if (offset != null) Offsets = new List<Offset>();
-        }
-        private void ValidateId(Guid id)
-        {
-            if (id == default)
-            {
-                throw new ArgumentException();
-            }
-        }
+    /// <summary>
+    /// Оценка
+    /// </summary>
+    public List<Offset> Offsets { get; set; }
+
+    public RecordBook(Guid id, Student student) : base(id)
+    {
+        Student = student;
+        Offsets = new List<Offset>();
+    }
+
+    public RecordBook(Guid id, Student student, List<Offset> offsets) : this(id, student)
+    {
+        Offsets = offsets ?? new List<Offset>();
     }
 }

@@ -1,29 +1,37 @@
-﻿using System;
-using DemoUniversity.Domain.Extensions;
+﻿using DemoUniversity.Domain.Extensions;
 
-namespace DemoUniversity.Domain.Models
+namespace DemoUniversity.Domain.Models;
+
+public class Student : Person
 {
-    public class Student : Person
-    {
-        /// <summary>
-        /// Сущность "специальность" для студента
-        /// </summary>
-        /// <example>в душе не ебу как описать корректно</example>
-        public string Speciality { get; }
-        /// <summary>
-        /// Сущность "курс" для студента
-        /// </summary>
-        /// <example>в душе не ебу как описать корректно</example>
-        public int Course { get; }
+    /// <summary>
+    /// Специальность студента
+    /// </summary>
+    public string Speciality { get; }
+    /// <summary>
+    /// Курс студента
+    /// </summary>
+    public int Course { get; }
 
-        public Student(Guid id, string lastName, string firstName, string middleName, string address, string phone,
-            int age,
-            string speciality, int course) : base(id, lastName, firstName, middleName, address, phone, age)
-        {
-            speciality.ValidateLength(2, 10);
-            course.ValidateRange(1, 6);
-            Speciality = speciality;
-            Course = course;
-        }
+    /// <summary>
+    /// Конструктор для валидации и присваивания значений полям студента
+    /// </summary>
+    /// <param name="id">id</param>
+    /// <param name="lastName">Фамилия</param>
+    /// <param name="age">Возраст</param>
+    /// <param name="speciality">Специальность</param>
+    /// <param name="course">Курс</param>
+    /// <param name="firstName">Имя</param>
+    /// <param name="middleName">Отчество</param>
+    /// <param name="address">Адрес</param>
+    /// <param name="phone">Номер телефона</param>
+    public Student(Guid id, string lastName, string firstName, string middleName, string address, string phone,
+        int age,
+        string speciality, int course) : base(id, lastName, firstName, middleName, address, phone, age)
+    {
+        speciality.ValidateLength(2, 10);
+        course.ValidateRange(1, 6);
+        Speciality = speciality;
+        Course = course;
     }
 }
