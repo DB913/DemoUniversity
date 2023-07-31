@@ -1,4 +1,6 @@
-﻿namespace DemoUniversity.Domain.Exceptions;
+﻿using System;
+
+namespace DemoUniversity.Domain.Exceptions;
 
 public class IncorrectStringException : Exception
 {

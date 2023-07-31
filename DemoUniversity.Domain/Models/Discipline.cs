@@ -1,4 +1,5 @@
-﻿using DemoUniversity.Domain.Extensions;
+﻿using System;
+using DemoUniversity.Domain.Extensions;
 
 namespace DemoUniversity.Domain.Models
 {

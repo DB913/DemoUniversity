@@ -1,4 +1,7 @@
-﻿namespace DemoUniversity.Domain.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace DemoUniversity.Domain.Models
 {
     public class Group
     {

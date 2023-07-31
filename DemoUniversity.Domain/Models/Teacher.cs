@@ -1,4 +1,6 @@
-﻿namespace DemoUniversity.Domain.Models
+﻿using System;
+
+namespace DemoUniversity.Domain.Models
 {
     public class Teacher : Person
     {

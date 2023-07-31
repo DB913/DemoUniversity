@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Extensions;
 

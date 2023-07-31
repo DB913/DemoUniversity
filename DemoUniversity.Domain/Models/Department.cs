@@ -1,4 +1,5 @@
-﻿using DemoUniversity.Domain.Exceptions;
+﻿using System;
+using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Extensions;
 
 namespace DemoUniversity.Domain.Models
