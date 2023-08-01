@@ -11,11 +11,8 @@ public class Discipline : BaseData<int>
     public string Name { get; }
 
     /// <summary>
-    /// Сущность учителя
+    /// Учитель
     /// </summary>
-    /// <example>Id="F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4",lastName="Свелкина",
-    /// firstName="Жопа", middleName="Геннадьевна",address="str.25 oct. 100/100",phone="+37377821213",
-    /// age=21, department????</example>
     public Teacher Teacher { get; set; }
 
     /// <summary>

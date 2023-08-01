@@ -12,21 +12,11 @@ public class Group : BaseData<Guid>
     /// </summary>
     public List<Student> Students { get; set; }
 
-    public Group(Guid id, string groupName, string yearStart, string shortNameDepartment, Student? student,
+    public Group(Guid id,  string yearStart, string shortNameDepartment, Student? student,
         List<Student> students) : base(id)
     {
-        ValidateGroupName(groupName, yearStart, shortNameDepartment);
-        GroupName = groupName;
+        GroupName = yearStart+shortNameDepartment;
         Students = students;
         if (student != null) Students = new List<Student>();
-    }
-
-    private static void ValidateGroupName(string groupName, string yearStart, string shortNameDepartment)
-    {
-        if (groupName != shortNameDepartment + yearStart)
-        {
-            throw new Exception("Название группы должно состоять из паттерна: год начала обучения " +
-                                "+ короткое название кафедры");
-        }
     }
 }

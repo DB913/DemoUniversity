@@ -16,5 +16,6 @@ public abstract class BaseData<TId> where TId : struct
         {
             throw new ArgumentException();
         }
+       
     }
 }
