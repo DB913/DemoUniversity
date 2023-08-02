@@ -11,13 +11,13 @@ public static class StringExtensions
             throw new IncorrectStringLengthException($"Длина должна быть от {minSize} до {maxSize} символов");
         }
     }
-
+    
     public static void ValidateRange(this int input, int minValue = 16, int maxValue = 150)
     {
         if (input < minValue || input > maxValue)
         {
             throw new IncorrectRangeException(
-                $"Допустимый диапозон принимаемых значений от {minValue} до {maxValue} символов");
+                $"Допустимый диапозон принимаемых значений от {minValue} до {maxValue}");
         }
     }
 }
