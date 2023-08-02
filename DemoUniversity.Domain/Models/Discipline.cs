@@ -19,12 +19,16 @@ public class Discipline : BaseData<int>
     /// Конструктор для валидации и присваивания значений полям 
     /// </summary>
     /// <param name="id">id</param>
-    /// <param name="name">Имя дисциплины</param>
-    /// <param name="teacher">Сущность учителя</param>
-    public Discipline(int id, string name, Teacher teacher) : base(id)
+    /// <param name="name">Название дисциплины. Длина:2-60 </param>
+    /// <param name="teacher">Учитель</param>
+    public Discipline(int id, string name) : base(id)
     {
         name.ValidateLength();
         Name = name;
+    }
+
+    public Discipline(int id, string name, Teacher teacher) : this(id, name)
+    {
         Teacher = teacher;
     }
 }

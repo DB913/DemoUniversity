@@ -23,7 +23,7 @@ public class Teacher : Person
     /// <param name="phone">Номер телефона</param>
     /// <param name="department">Кафедра</param>
     /// <param name="discipline">Дисциплина</param>
-    protected Teacher(Guid id, string lastName, string firstName, string middleName, string address, string phone, int age,
+    public Teacher(Guid id, string lastName, string firstName, string middleName, string address, string phone, int age,
         Department department, Discipline discipline) : base(id, lastName, firstName, middleName, address, phone, age)
     {
         Department = department;
