@@ -20,8 +20,8 @@ public class Department : BaseData<Guid>
     /// Конструктор для валидации и присваивания значений полям сущности "Кафедра"
     /// </summary>
     /// <param name="id">id</param>
-    /// <param name="name">Название кафедры</param>
-    /// <param name="shortName">Короткое название кафедры</param>
+    /// <param name="name">Название кафедры. Длина от 16 до 100</param>
+    /// <param name="shortName">Короткое название кафедры. Длина от 2 до 5</param>
     public Department(Guid id, string name, string shortName) : base(id)
     {
         name.ValidateLength(16, 100);
