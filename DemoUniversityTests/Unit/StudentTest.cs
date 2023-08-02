@@ -7,7 +7,7 @@ namespace DemoUniversityTests.Unit;
 public class StudentTest
 {
     [Fact]
-    public void CreateStudentPositiveTest()
+    public void SetCreateStudentPositiveTest()
     {
         var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
@@ -35,7 +35,7 @@ public class StudentTest
     }
 
     [Fact]
-    public void CheckExceptionForPhoneNumberTest()
+    public void SetCheckExceptionForPhoneNumberTest()
     {
         var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
@@ -66,7 +66,7 @@ public class StudentTest
         "+37377740122", 20, "", 3)]
     [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer Science and Engineering", 3)]
-    public void CheckExceptionForInvalidSpecialityTest(Guid id,string lastName, string firstName, string middleName,
+    public void SetCheckExceptionForInvalidSpecialityTest(Guid id,string lastName, string firstName, string middleName,
         string address, string phone, int age, string speciality, int course)
     {
         IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
@@ -82,7 +82,7 @@ public class StudentTest
         "+37377740122", 20, "Computer", 0)]
     [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", 7)]
-    public void CheckExceptionForInvalidCourseTest(Guid id,string lastName, string firstName, string middleName,
+    public void SetCheckExceptionForInvalidCourseTest(Guid id,string lastName, string firstName, string middleName,
         string address, string phone, int age, string speciality, int course)
     {
         IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
