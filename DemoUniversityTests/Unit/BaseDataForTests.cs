@@ -6,12 +6,12 @@ public class BaseDataForTests
 {
     public Faker faker;
 
-    public void SetFaker(Faker faker)
-    {
-        faker = new Faker("ru");
-     }
+    // public void SetFaker(Faker faker)
+    // {
+    //     faker = new Faker("ru");
+    //  }
 
-    public (string lastName, string firstName, string middleName) GenerateNames()
+    protected (string lastName, string firstName, string middleName) GenerateNames()
     {
         var lastName = faker.Name.LastName();
         var firstName = faker.Name.FirstName();

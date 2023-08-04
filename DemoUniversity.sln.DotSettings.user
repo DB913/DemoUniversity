@@ -1,10 +1,15 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\Asus\AppData\Local\JetBrains\Rider2023.1\resharper-host\temp\Rider\vAny\CoverageData\_DemoUniversity.-893171211\Snapshot\snapshot.utdcvr</s:String>
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a93d11f0_002Dce21_002D49f6_002Da91d_002Dfda355428316/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CheckCreateStudentPositiveTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.DepartmentTest.CreateDepartmentPositiveTest&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.GroupTest.SetCreateGroupPositiveTest&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.GroupTest.SetCreateGroupWithTwoStudentsTest&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.GroupTest.SetCreateGroupWithoutStudentsTest&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.GroupTest&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
     &lt;ProjectFile&gt;325207B4-EFA4-4349-875F-D06BC09D2115/d:Unit/f:StudentTest.cs&lt;/ProjectFile&gt;&#xD;
   &lt;/Or&gt;&#xD;

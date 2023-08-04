@@ -34,4 +34,5 @@ public class Student : Person
         Speciality = speciality;
         Course = course;
     }
+    
 }
