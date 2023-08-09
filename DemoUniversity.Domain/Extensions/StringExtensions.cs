@@ -4,12 +4,21 @@ namespace DemoUniversity.Domain.Extensions;
 
 public static class StringExtensions
 {
-    public static void ValidateLength(this string input, int minSize = 2, int maxSize = 60)
+    public static void ValidateLength(this string? input, int minSize = 2, int maxSize = 60)
     {
-        if (input.Length < minSize || input.Length > maxSize)
+        if (input.Length == 0 && input.Equals(null))
         {
-            throw new IncorrectStringLengthException($"Длина должна быть от {minSize} до {maxSize} символов");
+            throw new ArgumentEmptyOrNullException(
+                "Передаваемое значение не может быть null");        }
+        else
+        {
+            if (input!.Length < minSize || input.Length > maxSize)
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {minSize} до {maxSize} символов");
+            }
         }
+        
+
     }
     
     public static void ValidateRange(this int input, int minValue = 16, int maxValue = 150)
@@ -18,6 +27,31 @@ public static class StringExtensions
         {
             throw new IncorrectRangeException(
                 $"Допустимый диапозон принимаемых значений от {minValue} до {maxValue}");
+        }
+    }
+    
+    public static void ValidateEmptyObject(this object? input)
+    {
+        if (input == null)
+        {
+            throw new EmptyObjectException(
+                "Передаваемый объект не может быть null");
+        }
+    }
+    public static void ValidateEmptyString(this string? input)
+    {
+        if (input == null)
+        {
+            throw new ArgumentEmptyOrNullException(
+                "Передаваемое значение не может быть null");
+        }
+    }
+    public static void ValidateEmptyRange(this int? input)
+    {
+        if (input == 0)
+        {
+            throw new IncorrectRangeException(
+                "Передаваемое значение не может быть 0");
         }
     }
 }

@@ -40,7 +40,7 @@ public class Student : Person
     /// Метод для обновления специальности студента
     /// </summary>
     /// <param name="speciality">Новая специальность</param>
-    public void UpdateStudentSpeciality(string speciality)
+    public void UpdateStudentSpeciality(string? speciality)
     {
         speciality.ValidateLength(2, 10);
         Speciality = speciality;
@@ -52,6 +52,7 @@ public class Student : Person
     /// <param name="course">Обновленный курс</param>
     public void UpdateStudentCourse(int course)
     {
+        //course.ValidateEmptyRange();
         course.ValidateRange(1, 6);
         Course = course;
     }

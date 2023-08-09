@@ -1,4 +1,6 @@
-﻿namespace DemoUniversity.Domain.Models;
+﻿using DemoUniversity.Domain.Extensions;
+
+namespace DemoUniversity.Domain.Models;
 
 public class Teacher : Person
 {
@@ -36,6 +38,7 @@ public class Teacher : Person
     /// <param name="department">Новая кафедра преподавателя</param>
     public void UpdateTeacherDepartment(Department department)
     {
+        department.ValidateEmptyObject();
         Department = department;
     }
     
@@ -46,6 +49,7 @@ public class Teacher : Person
     /// <param name="discipline">Новая дисциплина преподавателя</param>
     public void UpdateTeacherDiscipline(Discipline discipline)
     {
+        discipline.ValidateEmptyObject();
         Discipline = discipline;
     }
 }
