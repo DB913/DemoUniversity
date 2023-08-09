@@ -7,11 +7,12 @@ public class Student : Person
     /// <summary>
     /// Специальность студента
     /// </summary>
-    public string Speciality { get; }
+    public string Speciality { get; private set; }
+
     /// <summary>
     /// Курс студента
     /// </summary>
-    public int Course { get; }
+    public int Course { get; private set; }
 
     /// <summary>
     /// Конструктор для валидации и присваивания значений полям студента
@@ -34,5 +35,24 @@ public class Student : Person
         Speciality = speciality;
         Course = course;
     }
-    
+
+    /// <summary>
+    /// Метод для обновления специальности студента
+    /// </summary>
+    /// <param name="speciality">Новая специальность</param>
+    public void UpdateStudentSpeciality(string speciality)
+    {
+        speciality.ValidateLength(2, 10);
+        Speciality = speciality;
+    }
+
+    /// <summary>
+    /// Метод для обновления курса студента
+    /// </summary>
+    /// <param name="course">Обновленный курс</param>
+    public void UpdateStudentCourse(int course)
+    {
+        course.ValidateRange(1, 6);
+        Course = course;
+    }
 }
