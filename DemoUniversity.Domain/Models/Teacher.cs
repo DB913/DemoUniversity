@@ -29,4 +29,23 @@ public class Teacher : Person
         Department = department;
         Discipline = discipline;
     }
+
+    /// <summary>
+    /// Метод для обновления кафедры преподавателя
+    /// </summary>
+    /// <param name="department">Новая кафедра преподавателя</param>
+    public void UpdateTeacherDepartment(Department department)
+    {
+        Department = department;
+    }
+    
+    
+    /// <summary>
+    /// Метод для обновления дисциплины преподавателя
+    /// </summary>
+    /// <param name="discipline">Новая дисциплина преподавателя</param>
+    public void UpdateTeacherDiscipline(Discipline discipline)
+    {
+        Discipline = discipline;
+    }
 }
