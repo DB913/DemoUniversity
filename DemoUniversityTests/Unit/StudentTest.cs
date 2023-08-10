@@ -94,7 +94,7 @@ public class StudentTest
     }
 
     [Fact]
-    public void UpdateStudentTest()
+    public void UpdateStudentSpecialityAndCourseTest()
     {
         var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
@@ -128,6 +128,137 @@ public class StudentTest
         Assert.True(student.Course == newCourse);
     }
 
+    [Fact]
+    public void UpdateStudentFioTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+        const string address = "street Cucueva 20/3. Part 10";
+        faker.Address.FullAddress();
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, 
+            lastName, 
+            firstName, 
+            middleName, 
+            address, 
+            phone, 
+            age, 
+            speciality, 
+            course);
+
+        var lastNameUpdate = faker.Name.LastName();
+        var firstNameUpdate = faker.Name.FirstName();
+        var middleNameUpdate = faker.Name.FirstName();
+
+        student.UpdateFio(lastNameUpdate,firstNameUpdate,middleNameUpdate);
+
+        Assert.True(student.Id == studentId);
+        Assert.True(student.LastName == lastNameUpdate);
+        Assert.True(student.FirstName == firstNameUpdate);
+        Assert.True(student.MiddleName == middleNameUpdate);
+    }
+    [Fact]
+    public void UpdateStudentAgeTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+        const string address = "street Cucueva 20/3. Part 10";
+        faker.Address.FullAddress();
+        const string phone = "+37377941321";
+        var age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, 
+            lastName, 
+            firstName, 
+            middleName, 
+            address, 
+            phone, 
+            age, 
+            speciality, 
+            course);
+        
+        age = 37;
+
+        student.UpdateAge(age);
+
+        Assert.True(student.Id == studentId);
+        Assert.True(student.Age == age);
+    }
+    [Fact]
+    public void UpdateStudentAddressTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+        var address = faker.Address.FullAddress();
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, 
+            lastName, 
+            firstName, 
+            middleName, 
+            address, 
+            phone, 
+            age, 
+            speciality, 
+            course);
+
+        var addressUpdate = faker.Address.FullAddress();
+        
+        student.UpdateAddress(addressUpdate);
+
+        Assert.True(student.Id == studentId);
+        Assert.True(student.Address == addressUpdate);
+    }
+    [Fact]
+    public void UpdateStudentPhoneNumberTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+        var address = faker.Address.FullAddress();
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, 
+            lastName, 
+            firstName, 
+            middleName, 
+            address, 
+            phone, 
+            age, 
+            speciality, 
+            course);
+
+        const string phoneUpdate = "+37377941444";
+
+        student.UpdatePhoneNumber(phoneUpdate);
+
+        Assert.True(student.Id == studentId);
+        Assert.True(student.Phone == phoneUpdate);
+    }
+    
     [Fact]
     public void CheckExceptionForInvalidSpecialityUpdateStudentTest()
     {

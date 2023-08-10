@@ -11,17 +11,20 @@ public static class StringExtensions
             throw new ArgumentEmptyOrNullException(
                 "Передаваемое значение не может быть null");
         }
-        else
+
+        if (input!.Length < minSize || input.Length > maxSize)
         {
-            if (input!.Length < minSize || input.Length > maxSize)
-            {
-                throw new IncorrectStringLengthException($"Длина должна быть от {minSize} до {maxSize} символов");
-            }
+            throw new IncorrectStringLengthException($"Длина должна быть от {minSize} до {maxSize} символов");
         }
     }
 
-    public static void ValidateRange(this int input, int minValue = 16, int maxValue = 150)
+    public static void ValidateRange(this int? input, int minValue = 16, int maxValue = 150)
     {
+        if (input == null)
+        {
+            throw new NullReferenceException("Принимаемое значение не может быть null");
+        }
+
         if (input < minValue || input > maxValue)
         {
             throw new IncorrectRangeException(

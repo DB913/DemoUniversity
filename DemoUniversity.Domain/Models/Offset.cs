@@ -22,7 +22,7 @@ public class Offset : BaseData<Guid>
     /// <summary>
     /// Оценка
     /// </summary>
-    public int Grade { get; set; }
+    public int? Grade { get; set; }
 
     /// <summary>
     /// Конструктор для инициализации полей зачетной книжки
@@ -32,7 +32,7 @@ public class Offset : BaseData<Guid>
     /// <param name="teacher">преподаватель</param>
     /// <param name="student">студент</param>
     /// <param name="grade">оценка</param>
-    public Offset(Guid id, Discipline discipline, Teacher teacher, Student student, int grade) : base(id)
+    public Offset(Guid id, Discipline discipline, Teacher teacher, Student student, int? grade) : base(id)
     {
         grade.ValidateRange(1, 5);
         Discipline = discipline;
