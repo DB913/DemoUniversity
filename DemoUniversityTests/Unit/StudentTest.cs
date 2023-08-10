@@ -21,7 +21,7 @@ public class StudentTest
         var speciality = "doctor";
         var course = 4;
 
-        var student = new Student(studentId,lastName, firstName, middleName, address, phone, age, speciality, course);
+        var student = new Student(studentId, lastName, firstName, middleName, address, phone, age, speciality, course);
 
         Assert.True(student.Id == studentId);
         Assert.True(student.LastName == lastName);
@@ -50,23 +50,22 @@ public class StudentTest
 
         //var student = () =>  new Student(studentId,lastName, firstName, middleName, address, phone,
         //    age,speciality,course);
-        
+
         //Assert.Throws<IncorrectStringException>(() => student);
-        
-        IncorrectStringException ex = Assert.Throws<IncorrectStringException>(() =>  
-            new Student(studentId,lastName, firstName, middleName, address, phone,
-            age,speciality,course));
-        
+
+        IncorrectStringException ex = Assert.Throws<IncorrectStringException>(() =>
+            new Student(studentId, lastName, firstName, middleName, address, phone,
+                age, speciality, course));
     }
 
     [Theory]
-    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "2", 3)]
-    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "", 3)]
-    [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+    [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer Science and Engineering", 3)]
-    public void SetCheckExceptionForInvalidSpecialityTest(Guid id,string lastName, string firstName, string middleName,
+    public void SetCheckExceptionForInvalidSpecialityTest(Guid id, string lastName, string firstName, string middleName,
         string address, string phone, int age, string speciality, int course)
     {
         IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
@@ -74,21 +73,19 @@ public class StudentTest
     }
 
     [Theory]
-    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", -4)]
-    [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+    [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", 300)]
-    [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
-        "+37377740122", 20, "Computer", 0)]
-    [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4","John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+    [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", 7)]
-    public void SetCheckExceptionForInvalidCourseTest(Guid id,string lastName, string firstName, string middleName,
+    public void SetCheckExceptionForInvalidCourseTest(Guid id, string lastName, string firstName, string middleName,
         string address, string phone, int age, string speciality, int course)
     {
         IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
             new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
     }
-    
+
     [Fact]
     public void UpdateStudentTest()
     {
@@ -104,14 +101,14 @@ public class StudentTest
         var speciality = "doctor";
         var course = 4;
 
-        var student = new Student(studentId,lastName, firstName, middleName, address, phone, age, speciality, course);
+        var student = new Student(studentId, lastName, firstName, middleName, address, phone, age, speciality, course);
 
         var newSpeciality = "proger";
         var newCourse = 3;
-        
+
         student.UpdateStudentSpeciality(newSpeciality);
         student.UpdateStudentCourse(newCourse);
-        
+
         Assert.True(student.Id == studentId);
         Assert.True(student.LastName == lastName);
         Assert.True(student.FirstName == firstName);
@@ -119,13 +116,13 @@ public class StudentTest
         Assert.True(student.Address == address);
         Assert.True(student.Phone == phone);
         Assert.True(student.Age == age);
-        
+
         Assert.True(student.Speciality == newSpeciality);
         Assert.True(student.Course == newCourse);
     }
 
     [Fact]
-    public void CheckExceptionForInvalidUpdateStudentTest()
+    public void CheckExceptionForInvalidSpecialityUpdateStudentTest()
     {
         var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
@@ -139,18 +136,39 @@ public class StudentTest
         var speciality = "doctor";
         var course = 4;
 
-        var student = new Student(studentId,lastName, firstName, middleName, address, phone, age, speciality, course);
+        var student = new Student(studentId, lastName, firstName, middleName, address, phone, age, speciality, course);
 
-        var newSpeciality = "proger";
+        var newSpeciality = "p";
         var newCourse = 3;
-        
-        student.UpdateStudentSpeciality(newSpeciality);
+
         student.UpdateStudentCourse(newCourse);
-        
-        ArgumentEmptyOrNullException ex = Assert.Throws<ArgumentEmptyOrNullException>(() =>  
-            student.UpdateStudentSpeciality(null));
+
+        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+            student.UpdateStudentSpeciality(newSpeciality));
     }
-    
+    [Fact]
+    public void CheckExceptionForInvalidCourseUpdateStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+        var address = "street Cucueva 20/3. Part 10";
+        faker.Address.FullAddress();
+        var phone = "+37377941321";
+        var age = 25;
+        var speciality = "doctor";
+        var course = 4;
+
+        var student = new Student(studentId, lastName, firstName, middleName, address, phone, age, speciality, course);
+
+        const int newCourse = 3252;
+        
+        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+            student.UpdateStudentCourse(newCourse));
+    }
+
     /* public void CheckCreateStudentWithAutoFixture()
      {
          Fixture fixture = new Fixture();

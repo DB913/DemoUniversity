@@ -6,10 +6,11 @@ public static class StringExtensions
 {
     public static void ValidateLength(this string? input, int minSize = 2, int maxSize = 60)
     {
-        if (input.Length == 0 && input.Equals(null))
+        if (input?.Length == 0 || (bool)input?.Equals(null))
         {
             throw new ArgumentEmptyOrNullException(
-                "Передаваемое значение не может быть null");        }
+                "Передаваемое значение не может быть null");
+        }
         else
         {
             if (input!.Length < minSize || input.Length > maxSize)
@@ -17,10 +18,8 @@ public static class StringExtensions
                 throw new IncorrectStringLengthException($"Длина должна быть от {minSize} до {maxSize} символов");
             }
         }
-        
-
     }
-    
+
     public static void ValidateRange(this int input, int minValue = 16, int maxValue = 150)
     {
         if (input < minValue || input > maxValue)
@@ -29,7 +28,7 @@ public static class StringExtensions
                 $"Допустимый диапозон принимаемых значений от {minValue} до {maxValue}");
         }
     }
-    
+
     public static void ValidateEmptyObject(this object? input)
     {
         if (input == null)
@@ -38,6 +37,7 @@ public static class StringExtensions
                 "Передаваемый объект не может быть null");
         }
     }
+
     public static void ValidateEmptyString(this string? input)
     {
         if (input == null)
@@ -46,6 +46,7 @@ public static class StringExtensions
                 "Передаваемое значение не может быть null");
         }
     }
+
     public static void ValidateEmptyRange(this int? input)
     {
         if (input == 0)

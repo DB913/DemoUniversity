@@ -7,7 +7,7 @@ public class Student : Person
     /// <summary>
     /// Специальность студента
     /// </summary>
-    public string Speciality { get; private set; }
+    public string? Speciality { get; private set; }
 
     /// <summary>
     /// Курс студента
