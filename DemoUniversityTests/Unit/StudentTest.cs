@@ -61,8 +61,6 @@ public class StudentTest
     [Theory]
     [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "2", 3)]
-    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
-        "+37377740122", 20, "", 3)]
     [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer Science and Engineering", 3)]
     public void SetCheckExceptionForInvalidSpecialityTest(Guid id, string lastName, string firstName, string middleName,
@@ -71,7 +69,16 @@ public class StudentTest
         IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
             new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
     }
-
+    [Theory]
+    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+        "+37377740122", 20, "", 3)]
+    public void SetCheckExceptionForEmptySpecialityTest(Guid id, string lastName, string firstName, string middleName,
+        string address, string phone, int age, string speciality, int course)
+    {
+        ArgumentEmptyOrNullException ex = Assert.Throws<ArgumentEmptyOrNullException>(() =>
+            new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
+    }
+    
     [Theory]
     [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", -4)]
