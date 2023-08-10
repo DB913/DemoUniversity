@@ -12,13 +12,13 @@ public class Group : BaseData<Guid>
     /// </summary>
     public List<Student> Students { get; set; }
 
-    public Group(Guid id,  string yearStart, string shortNameDepartment) : base(id)
+    public Group(Guid id, string yearStart, string shortNameDepartment) : base(id)
     {
-        GroupName = yearStart+shortNameDepartment;
+        GroupName = yearStart + shortNameDepartment;
         Students = new List<Student>();
     }
 
-    public Group(Guid id, string yearStart, string shortNameDepartment, 
+    public Group(Guid id, string yearStart, string shortNameDepartment,
         List<Student> students) : this(id, yearStart, shortNameDepartment)
     {
         Students = students ?? new List<Student>();
