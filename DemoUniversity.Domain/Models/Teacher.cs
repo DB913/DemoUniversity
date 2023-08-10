@@ -7,12 +7,12 @@ public class Teacher : Person
     /// <summary>
     /// Кафедра преподавателя
     /// </summary>
-    public Department Department { get; set; }
+    public Department Department { get; private set; }
 
     /// <summary>
     /// Дисциплина преподавателя
     /// </summary>
-    public Discipline Discipline { get; set; }
+    public Discipline Discipline { get; private set; }
 
     /// <summary>
     /// Конструктор для валидации и присваивания значений полям учителя

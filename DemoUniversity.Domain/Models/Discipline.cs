@@ -13,7 +13,7 @@ public class Discipline : BaseData<int>
     /// <summary>
     /// Учитель
     /// </summary>
-    public Teacher Teacher { get; set; }
+    public Teacher? Teacher { get; set; }
 
     /// <summary>
     /// Конструктор для валидации и присваивания значений полям 

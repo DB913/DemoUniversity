@@ -11,6 +11,8 @@
       &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.GroupTest.SetCreateGroupWithoutStudentsTest&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.GroupTest&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.TeacherTest.SetCreateTeacherPositiveTest&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.TeacherTest.UpdateTeacherDepartmentPositiveTest&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::325207B4-EFA4-4349-875F-D06BC09D2115::net7.0::DemoUniversityTests.Unit.TeacherTest.UpdateTeacherDisciplinePositiveTest&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
     &lt;ProjectFile&gt;325207B4-EFA4-4349-875F-D06BC09D2115/d:Unit/f:StudentTest.cs&lt;/ProjectFile&gt;&#xD;
   &lt;/Or&gt;&#xD;
