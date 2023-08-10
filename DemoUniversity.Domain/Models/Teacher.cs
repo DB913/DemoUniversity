@@ -8,6 +8,7 @@ public class Teacher : Person
     /// Кафедра преподавателя
     /// </summary>
     public Department Department { get; set; }
+
     /// <summary>
     /// Дисциплина преподавателя
     /// </summary>
@@ -25,8 +26,15 @@ public class Teacher : Person
     /// <param name="phone">Номер телефона</param>
     /// <param name="department">Кафедра</param>
     /// <param name="discipline">Дисциплина</param>
-    public Teacher(Guid id, string lastName, string firstName, string middleName, string address, string phone, int age,
-        Department department, Discipline discipline) : base(id, lastName, firstName, middleName, address, phone, age)
+    public Teacher(Guid id,
+        string lastName,
+        string firstName,
+        string middleName,
+        string address,
+        string phone,
+        int age,
+        Department department,
+        Discipline discipline) : base(id, lastName, firstName, middleName, address, phone, age)
     {
         Department = department;
         Discipline = discipline;
@@ -41,8 +49,7 @@ public class Teacher : Person
         department.ValidateEmptyObject();
         Department = department;
     }
-    
-    
+
     /// <summary>
     /// Метод для обновления дисциплины преподавателя
     /// </summary>
