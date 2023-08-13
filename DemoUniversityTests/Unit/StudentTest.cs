@@ -71,17 +71,8 @@ public class StudentTest
         IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
             new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
     }
-    // [Theory]
-    //
-    // public void SetCheckExceptionForEmptySpecialityTest(Guid id, string lastName, string firstName, string middleName,
-    //     string address, string phone, int age, string speciality, int course)
-    // {
-    //     ArgumentEmptyOrNullException ex = Assert.Throws<ArgumentEmptyOrNullException>(() =>
-    //         new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
-    // }
-    
-    [Theory]
 
+    [Theory]
     [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", 300)]
     [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
@@ -92,7 +83,7 @@ public class StudentTest
         Assert.Throws<IncorrectRangeException>(() =>
             new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
     }
-    
+
     [Theory]
     [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", 0)]
@@ -155,27 +146,28 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 4;
 
-        var student = new Student(studentId, 
-            lastName, 
-            firstName, 
-            middleName, 
-            address, 
-            phone, 
-            age, 
-            speciality, 
+        var student = new Student(studentId,
+            lastName,
+            firstName,
+            middleName,
+            address,
+            phone,
+            age,
+            speciality,
             course);
 
         var lastNameUpdate = faker.Name.LastName();
         var firstNameUpdate = faker.Name.FirstName();
         var middleNameUpdate = faker.Name.FirstName();
 
-        student.UpdateFio(lastNameUpdate,firstNameUpdate,middleNameUpdate);
+        student.UpdateFio(lastNameUpdate, firstNameUpdate, middleNameUpdate);
 
         Assert.True(student.Id == studentId);
         Assert.True(student.LastName == lastNameUpdate);
         Assert.True(student.FirstName == firstNameUpdate);
         Assert.True(student.MiddleName == middleNameUpdate);
     }
+
     [Fact]
     public void UpdateStudentAgeTest()
     {
@@ -191,16 +183,16 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 4;
 
-        var student = new Student(studentId, 
-            lastName, 
-            firstName, 
-            middleName, 
-            address, 
-            phone, 
-            age, 
-            speciality, 
+        var student = new Student(studentId,
+            lastName,
+            firstName,
+            middleName,
+            address,
+            phone,
+            age,
+            speciality,
             course);
-        
+
         age = 37;
 
         student.UpdateAge(age);
@@ -208,6 +200,7 @@ public class StudentTest
         Assert.True(student.Id == studentId);
         Assert.True(student.Age == age);
     }
+
     [Fact]
     public void UpdateStudentAddressTest()
     {
@@ -222,23 +215,24 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 4;
 
-        var student = new Student(studentId, 
-            lastName, 
-            firstName, 
-            middleName, 
-            address, 
-            phone, 
-            age, 
-            speciality, 
+        var student = new Student(studentId,
+            lastName,
+            firstName,
+            middleName,
+            address,
+            phone,
+            age,
+            speciality,
             course);
 
         var addressUpdate = faker.Address.FullAddress();
-        
+
         student.UpdateAddress(addressUpdate);
 
         Assert.True(student.Id == studentId);
         Assert.True(student.Address == addressUpdate);
     }
+
     [Fact]
     public void UpdateStudentPhoneNumberTest()
     {
@@ -253,14 +247,14 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 4;
 
-        var student = new Student(studentId, 
-            lastName, 
-            firstName, 
-            middleName, 
-            address, 
-            phone, 
-            age, 
-            speciality, 
+        var student = new Student(studentId,
+            lastName,
+            firstName,
+            middleName,
+            address,
+            phone,
+            age,
+            speciality,
             course);
 
         const string phoneUpdate = "+37377941444";
@@ -270,7 +264,7 @@ public class StudentTest
         Assert.True(student.Id == studentId);
         Assert.True(student.Phone == phoneUpdate);
     }
-    
+
     [Fact]
     public void CheckExceptionForInvalidSpecialityUpdateStudentTest()
     {
@@ -296,6 +290,7 @@ public class StudentTest
         IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
             student.UpdateStudentSpeciality(newSpeciality));
     }
+
     [Fact]
     public void CheckExceptionForInvalidCourseUpdateStudentTest()
     {
@@ -314,7 +309,7 @@ public class StudentTest
         var student = new Student(studentId, lastName, firstName, middleName, address, phone, age, speciality, course);
 
         const int newCourse = 3252;
-        
+
         IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
             student.UpdateStudentCourse(newCourse));
     }

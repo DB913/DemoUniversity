@@ -14,8 +14,7 @@ public abstract class BaseData<TId> where TId : struct
     {
         if (EqualityComparer<TId>.Default.Equals(id, default))
         {
-            throw new ArgumentException();
+            throw new ArgumentException("Некорректное значение id");
         }
-       
     }
 }
