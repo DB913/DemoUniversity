@@ -81,16 +81,27 @@ public class StudentTest
     // }
     
     [Theory]
-    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
-        "+37377740122", 20, "Computer", -4)]
+
     [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", 300)]
     [InlineData("F9168C6E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
         "+37377740122", 20, "Computer", 7)]
-    public void SetCheckExceptionForInvalidCourseTest(Guid id, string lastName, string firstName, string middleName,
+    public void SetCheckExceptionForCourseMoreTest(Guid id, string lastName, string firstName, string middleName,
         string address, string phone, int age, string speciality, int course)
     {
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+        Assert.Throws<IncorrectRangeException>(() =>
+            new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
+    }
+    
+    [Theory]
+    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+        "+37377740122", 20, "Computer", 0)]
+    [InlineData("F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4", "John", "Smith", "Doe", "street Cucueva 20/3. Part 10",
+        "+37377740122", 20, "Computer", -4)]
+    public void SetCheckExceptionForCourseLessTest(Guid id, string lastName, string firstName, string middleName,
+        string address, string phone, int age, string speciality, int course)
+    {
+        Assert.Throws<Exception>(() =>
             new Student(id, lastName, firstName, middleName, address, phone, age, speciality, course));
     }
 

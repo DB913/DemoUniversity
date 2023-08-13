@@ -4,9 +4,9 @@ namespace DemoUniversity.Domain.Extensions;
 
 public static class StringExtensions
 {
-    public static void ValidateLength(this string? input, int minSize = 2, int maxSize = 60)
+    public static void ValidateLength(this string input, int minSize = 2, int maxSize = 60)
     {
-        if ((bool)input?.Equals(null))
+        if (input.Equals(null))
         {
             throw new ArgumentEmptyOrNullException(
                 "Передаваемое значение не может быть null");
@@ -18,11 +18,11 @@ public static class StringExtensions
         }
     }
 
-    public static void ValidateRange(this int? input, int minValue = 16, int maxValue = 150)
+    public static void ValidateRange(this int input, int minValue = 16, int maxValue = 150)
     {
-        if (input == null)
+        if (input <= 0)
         {
-            throw new NullReferenceException("Принимаемое значение не может быть null");
+            throw new Exception("Значение не может быть больше либо равным 0");
         }
 
         if (input < minValue || input > maxValue)
