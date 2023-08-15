@@ -98,4 +98,33 @@ public class GroupTest
         Assert.True(group.GroupName.Equals(yearStart + shortNameDepartment));
         Assert.Empty(group.Students);
     }
+    
+    [Fact]
+    public void CreateGroupWithDefaultIdTest()
+    {
+        const string yearStart = "2021";
+        const string shortNameDepartment = "АН";
+        Guid groupId = default;
+
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+        var address = "street Cucueva 20/3. Part 10";
+        faker.Address.FullAddress();
+        var phone = "+37377941321";
+        var age = 25;
+        var speciality = "doctor";
+        var course = 4;
+        var students = new List<Student>();
+
+        var student = new Student(studentId, lastName, firstName, middleName, address, phone, age, speciality, course);
+
+        students.Add(student);
+        
+        Assert.Throws<ArgumentException>(() =>
+            new Group(groupId, yearStart, shortNameDepartment, students));
+        
+    }
 }
