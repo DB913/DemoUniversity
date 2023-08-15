@@ -9,22 +9,22 @@ public class Offset : BaseData<Guid>
     /// <summary>
     /// Название дисциплины
     /// </summary>
-    public Discipline Discipline { get; set; }
+    public Discipline Discipline { get; private set; }
 
     /// <summary>
     /// Преподаватель
     /// </summary>
-    public Teacher Teacher { get; set; }
+    public Teacher Teacher { get; private set; }
 
     /// <summary>
     /// Студент
     /// </summary>
-    public Student Student { get; set; }
+    public Student Student { get; private set; }
 
     /// <summary>
     /// Оценка
     /// </summary>
-    public int Grade { get; set; }
+    public int Grade { get; private set; }
 
     /// <summary>
     /// Конструктор для инициализации полей зачетной книжки
@@ -49,8 +49,8 @@ public class Offset : BaseData<Guid>
     /// <param name="discipline">Дисциплина</param>
     /// <param name="teacher">Учитель</param>
     /// <param name="student">Студент</param>
-    /// <param name="grade">Оценка. Допустимая длина от 1 до 5</param>
-    public void UpdateTeacherDepartment(Discipline discipline, Teacher teacher, Student student, int grade)
+    /// <param name="grade">Оценка. Допустимый диапозон от 1 до 5</param>
+    public void UpdateOffset(Discipline discipline, Teacher teacher, Student student, int grade)
     {
         grade.ValidateRange(1, 5);
         Discipline = discipline;
