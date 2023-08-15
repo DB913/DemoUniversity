@@ -10,7 +10,7 @@ public class RecordBook : BaseData<Guid>
     /// <summary>
     /// Оценка
     /// </summary>
-    public List<Offset> Offsets { get; set; }
+    public List<Offset> Offsets { get; private set; }
 
     public RecordBook(Guid id, Student student) : base(id)
     {

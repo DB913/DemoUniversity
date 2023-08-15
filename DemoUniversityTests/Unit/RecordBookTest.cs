@@ -3,14 +3,15 @@ using DemoUniversity.Domain.Models;
 
 namespace DemoUniversityTests.Unit;
 
-public class OffsetTest
+public class RecordBookTest
 {
     [Fact]
-    public void CreateOffsetTest()
+    public void CreateRecordBookTest()
     {
-        var offsetId = Guid.NewGuid();
         var grade = 3;
         var faker = new Faker("ru");
+
+        //teacher
         var teacherId = Guid.NewGuid();
         var lastNameTeacher = faker.Name.LastName();
         var firstNameTeacher = faker.Name.FirstName();
@@ -19,16 +20,17 @@ public class OffsetTest
         const string phoneTeacher = "+37377941444";
         const int ageTeacher = 25;
 
+        //discipline
         const string disciplineName = "restApi";
         const int disciplineId = 1;
 
         var disciplineTeacher = new Discipline(disciplineId, disciplineName);
 
+        //department
         var departmentId = Guid.NewGuid();
         var departmentName = faker.Company.CompanyName() + faker.Company.CompanyName();
         const string departmentShortName = "test";
         var department = new Department(departmentId, departmentName, departmentShortName);
-
 
         var teacher = new Teacher(teacherId,
             lastNameTeacher,
@@ -42,7 +44,7 @@ public class OffsetTest
 
         var discipline = new Discipline(disciplineId, disciplineName, teacher);
 
-
+        //student
         var studentId = Guid.NewGuid();
         var lastNameStudent = faker.Name.LastName();
         var firstNameStudent = faker.Name.FirstName();
@@ -63,29 +65,64 @@ public class OffsetTest
             speciality,
             course);
 
+        //offset
+        var offsetId = Guid.NewGuid();
         var offset = new Offset(offsetId, discipline, teacher, student, grade);
+        var offsets = new List<Offset>();
+        if (offsets == null) throw new ArgumentNullException();
+        offsets.Add(offset);
 
-        Assert.True(offset.Id != default);
-        Assert.NotNull(offset.Discipline.Name);
-        Assert.NotNull(offset.Discipline.Teacher);
+        //recordBook
+        var recordBookId = Guid.NewGuid();
 
-        Assert.NotNull(offset.Teacher.Discipline);
-        Assert.NotNull(offset.Teacher.FirstName);
-        Assert.NotNull(offset.Teacher.LastName);
-        Assert.NotNull(offset.Teacher.MiddleName);
-        Assert.True(offset.Teacher.Age == ageTeacher);
-        Assert.True(offset.Teacher.Department.Name == department.Name);
-        Assert.True(offset.Teacher.Discipline.Name == disciplineName);
+        var recordBook = new RecordBook(recordBookId, student, offsets);
 
-        Assert.True(offset.Discipline.Id != default);
+        Assert.True(recordBook.Student.FirstName == firstNameStudent);
+        Assert.True(recordBook.Student.Id == studentId);
     }
 
     [Fact]
-    public void UpdateOffsetTest()
+    public void CreateRecordBookWithoutOffsetTest()
     {
-        var offsetId = Guid.NewGuid();
-        const int grade = 3;
+        //student
+        var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
+        var lastNameStudent = faker.Name.LastName();
+        var firstNameStudent = faker.Name.FirstName();
+        var middleNameStudent = faker.Name.FirstName();
+        var addressStudent = faker.Address.FullAddress();
+        const string phoneStudent = "+37377941321";
+        const int ageStudent = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId,
+            lastNameStudent,
+            firstNameStudent,
+            middleNameStudent,
+            addressStudent,
+            phoneStudent,
+            ageStudent,
+            speciality,
+            course);
+
+
+        //recordBook
+        var recordBookId = Guid.NewGuid();
+
+        var recordBook = new RecordBook(recordBookId, student);
+
+        Assert.True(recordBook.Student.FirstName == firstNameStudent);
+        Assert.True(recordBook.Student.Id == studentId);
+    }
+
+    [Fact]
+    public void CreateRecordBookWithTwoOffsetTest()
+    {
+        var grade = 3;
+        var faker = new Faker("ru");
+
+        //teacher
         var teacherId = Guid.NewGuid();
         var lastNameTeacher = faker.Name.LastName();
         var firstNameTeacher = faker.Name.FirstName();
@@ -94,17 +131,17 @@ public class OffsetTest
         const string phoneTeacher = "+37377941444";
         const int ageTeacher = 25;
 
+        //discipline
         const string disciplineName = "restApi";
-        const string disciplineNameUpdate = "SoapApi";
         const int disciplineId = 1;
 
         var disciplineTeacher = new Discipline(disciplineId, disciplineName);
 
+        //department
         var departmentId = Guid.NewGuid();
         var departmentName = faker.Company.CompanyName() + faker.Company.CompanyName();
         const string departmentShortName = "test";
         var department = new Department(departmentId, departmentName, departmentShortName);
-
 
         var teacher = new Teacher(teacherId,
             lastNameTeacher,
@@ -118,6 +155,7 @@ public class OffsetTest
 
         var discipline = new Discipline(disciplineId, disciplineName, teacher);
 
+        //student
         var studentId = Guid.NewGuid();
         var lastNameStudent = faker.Name.LastName();
         var firstNameStudent = faker.Name.FirstName();
@@ -138,50 +176,25 @@ public class OffsetTest
             speciality,
             course);
 
+        //offset
+        var offsetId = Guid.NewGuid();
         var offset = new Offset(offsetId, discipline, teacher, student, grade);
+        var offsets = new List<Offset>();
+        if (offsets == null) throw new ArgumentNullException();
+        offsets.Add(offset);
 
-        const int gradeUpdate = grade + 1;
+        //offset
+        var offsetSecondId = Guid.NewGuid();
+        var offsetSecond = new Offset(offsetSecondId, discipline, teacher, student, grade);
 
-        var lastNameTeacherUpdate = faker.Name.LastName();
-        var firstNameTeacherUpdate = faker.Name.FirstName();
-        var middleNameTeacherUpdate = faker.Name.FirstName();
+        offsets.Add(offsetSecond);
 
-        var teacherUpdate = new Teacher(teacherId,
-            lastNameTeacherUpdate,
-            firstNameTeacherUpdate,
-            middleNameTeacherUpdate,
-            addressTeacher,
-            phoneTeacher,
-            ageTeacher,
-            department,
-            disciplineTeacher);
+        //recordBook
+        var recordBookId = Guid.NewGuid();
 
-        var disciplineUpdate = new Discipline(disciplineId, disciplineNameUpdate, teacher);
+        var recordBook = new RecordBook(recordBookId, student, offsets);
 
-        var lastNameStudentUpdate = faker.Name.LastName();
-        var firstNameStudentUpdate = faker.Name.FirstName();
-        var middleNameStudentUpdate = faker.Name.FirstName();
-
-        var studentUpdate = new Student(studentId,
-            lastNameStudentUpdate,
-            firstNameStudentUpdate,
-            middleNameStudentUpdate,
-            addressStudent,
-            phoneStudent,
-            ageStudent,
-            speciality,
-            course);
-
-        offset.UpdateOffset(disciplineUpdate, teacherUpdate, studentUpdate, gradeUpdate);
-
-        Assert.True(offset.Discipline.Name == disciplineNameUpdate);
-        Assert.True(offset.Grade == gradeUpdate);
-        Assert.True(offset.Teacher.LastName == lastNameTeacherUpdate);
-        Assert.True(offset.Teacher.FirstName == firstNameTeacherUpdate);
-        Assert.True(offset.Teacher.MiddleName == middleNameTeacherUpdate);
-
-        Assert.True(offset.Student.FirstName == firstNameStudentUpdate);
-        Assert.True(offset.Student.LastName == lastNameStudentUpdate);
-        Assert.True(offset.Student.MiddleName == middleNameStudentUpdate);
+        Assert.True(recordBook.Student.FirstName == firstNameStudent);
+        Assert.True(recordBook.Student.Id == studentId);
     }
 }
