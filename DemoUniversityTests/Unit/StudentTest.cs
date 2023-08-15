@@ -104,8 +104,7 @@ public class StudentTest
         var lastName = faker.Name.LastName();
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
-        var address = "street Cucueva 20/3. Part 10";
-        faker.Address.FullAddress();
+        var address =  faker.Address.FullAddress();
         var phone = "+37377941321";
         var age = 25;
         var speciality = "doctor";
