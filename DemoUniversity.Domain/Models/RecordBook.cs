@@ -33,4 +33,14 @@ public class RecordBook : BaseData<Guid>
     {
         Offsets = offsets ?? new List<Offset>();
     }
+    /// <summary>
+    /// Метод обновления RecordBook
+    /// </summary>
+    /// <param name="student">Студент зачетной книжки</param>
+    /// <param name="offsets">Список зачетов</param>
+    public void UpdateRecordBook(Student student, List<Offset> offsets)
+    {
+        Student = student;
+        Offsets = new List<Offset>();
+    }
 }
