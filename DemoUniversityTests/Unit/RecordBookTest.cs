@@ -195,6 +195,12 @@ public class RecordBookTest
         var recordBook = new RecordBook(recordBookId, student, offsets);
 
         Assert.True(recordBook.Student.FirstName == firstNameStudent);
+        Assert.True(recordBook.Student.LastName == lastNameStudent);
+        Assert.True(recordBook.Student.MiddleName == middleNameStudent);
         Assert.True(recordBook.Student.Id == studentId);
+        Assert.NotEmpty(recordBook.Offsets);
+        Assert.True(recordBook.Offsets[0].Teacher.FirstName==firstNameTeacher);
+        Assert.True(recordBook.Offsets[0].Teacher.LastName==lastNameTeacher);
+        Assert.True(recordBook.Offsets[0].Teacher.MiddleName==middleNameTeacher);
     }
 }
