@@ -6,29 +6,93 @@ namespace DemoUniversity.Domain.Models;
 
 public abstract class Person : BaseData<Guid>
 {
-    /// <summary>
-    /// Фамилия
-    /// </summary>
-    /// <example>Иванов</example>
-    public string LastName { get; private set; }
+    public abstract class Address
+    {
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int HouseNumber { get; set; }
+        public int ApartmentNumber { get; set; }
 
-    /// <summary>
-    /// Имя
-    /// </summary>
-    /// <example>Сергей</example>
-    public string FirstName { get; private set; }
+        protected Address(string city, string street, int houseNumber, int apartmentNumber)
+        {
+            city.ValidateLength(2, 12);
+            street.ValidateLength(2, 20);
+            houseNumber.ValidateRange();
+            apartmentNumber.ValidateRange();
+            City = city;
+            Street = street;
+            HouseNumber = houseNumber;
+            ApartmentNumber = apartmentNumber;
+        }
 
-    /// <summary>
-    /// Отчество
-    /// </summary>
-    /// <example>Петрович</example>
-    public string MiddleName { get; private set; }
+        /// <summary>
+        /// Метод для обновления адреса
+        /// </summary>
+        /// <param name="city">Город</param>
+        /// <param name="street">Улица</param>
+        /// <param name="houseNumber">Номер дома</param>
+        /// <param name="apartmentNumber">Номер квартиры</param>
+        public void UpdateAddress(string city, string street, int houseNumber, int apartmentNumber)
+        {
+            city.ValidateLength(2, 15);
+            street.ValidateLength(5, 20);
+            houseNumber.ValidateRange();
+            apartmentNumber.ValidateRange();
+        }
+    }
 
-    /// <summary>
-    /// Адрес
-    /// </summary>
-    /// <example>"str.25 oct. 100/100"</example>
-    public string Address { get; private set; }
+    public abstract class Fio
+    {
+        /// <summary>
+        /// Фамилия
+        /// </summary>
+        /// <example>Иванов</example>
+        public string LastName { get; protected set; }
+
+        /// <summary>
+        /// Имя
+        /// </summary>
+        /// <example>Сергей</example>
+        public string FirstName { get; protected set; }
+
+        /// <summary>
+        /// Отчество
+        /// </summary>
+        /// <example>Петрович</example>
+        public string MiddleName { get; protected set; }
+
+        /// <summary>
+        /// Конструктор для валидации и присваивания значений полям FIO
+        /// </summary>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="firstName">Имя</param>
+        /// <param name="middleName">Отчество</param>
+        protected Fio(string lastName, string firstName, string middleName)
+        {
+            lastName.ValidateLength();
+            firstName.ValidateLength();
+            middleName.ValidateLength();
+            LastName = lastName;
+            FirstName = firstName;
+            MiddleName = middleName;
+        }
+
+        /// <summary>
+        /// Метод для обновления ФИО
+        /// </summary>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="firstName">Имя</param>
+        /// <param name="middleName">Отчество</param>
+        public void UpdateFio(string lastName, string firstName, string middleName)
+        {
+            lastName.ValidateLength();
+            firstName.ValidateLength();
+            middleName.ValidateLength();
+            LastName = lastName;
+            FirstName = firstName;
+            MiddleName = middleName;
+        }
+    }
 
     /// <summary>
     /// Возраст
@@ -42,47 +106,28 @@ public abstract class Person : BaseData<Guid>
     /// <example>+37377821213</example>
     public string Phone { get; private set; }
 
-    protected Person(Guid id, string lastName, string firstName, string middleName, string address, string phone,
-        int age) : base(id)
+    /// <summary>
+    /// Адрес
+    /// </summary>
+    public Address PersonAddress { get; set; }
+
+    /// <summary>
+    /// ФИО
+    /// </summary>
+    public Fio PersonFio { get; set; }
+
+    protected Person(Guid id, Fio fio, Address address, string phone, int age) : base(id)
     {
-        lastName.ValidateLength();
-        firstName.ValidateLength();
-        middleName.ValidateLength();
-        address.ValidateLength(20, 150);
+        address.ValidateEmptyObject();
+        fio.ValidateEmptyObject();
         age.ValidateRange();
         ValidatePhoneNumber(phone);
-        LastName = lastName;
-        FirstName = firstName;
-        MiddleName = middleName;
-        Address = address;
+
         Phone = phone;
         Age = age;
-    }
 
-    /// <summary>
-    /// Метод для обновления ФИО
-    /// </summary>
-    /// <param name="lastName">Фамилия</param>
-    /// <param name="firstName">Имя</param>
-    /// <param name="middleName">Отчество</param>
-    public void UpdateFio(string lastName, string firstName, string middleName)
-    {
-        lastName.ValidateLength();
-        firstName.ValidateLength();
-        middleName.ValidateLength();
-        LastName = lastName;
-        FirstName = firstName;
-        MiddleName = middleName;
-    }
-
-    /// <summary>
-    /// Метод для обновления адреса
-    /// </summary>
-    /// <param name="address">Адрес</param>
-    public void UpdateAddress(string address)
-    {
-        address.ValidateLength(20, 150);
-        Address = address;
+        PersonAddress = address;
+        PersonFio = fio;
     }
 
     /// <summary>

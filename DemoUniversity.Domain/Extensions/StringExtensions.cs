@@ -22,7 +22,7 @@ public static class StringExtensions
     {
         if (input <= 0)
         {
-            throw new Exception("Значение не может быть больше либо равным 0");
+            throw new NullReferenceException("Значение не может быть меньше либо равным 0");
         }
 
         if (input < minValue || input > maxValue)
@@ -32,7 +32,7 @@ public static class StringExtensions
         }
     }
 
-    public static void ValidateEmptyObject(this object? input)
+    public static void ValidateEmptyObject(this object input)
     {
         if (input == null)
         {
