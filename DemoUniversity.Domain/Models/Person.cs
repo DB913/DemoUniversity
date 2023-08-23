@@ -6,19 +6,19 @@ namespace DemoUniversity.Domain.Models;
 
 public abstract class Person : BaseData<Guid>
 {
-    public abstract class Address
+    public class Address
     {
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }
         public int ApartmentNumber { get; set; }
 
-        protected Address(string city, string street, int houseNumber, int apartmentNumber)
+        public Address(string city, string street, int houseNumber, int apartmentNumber)
         {
-            city.ValidateLength(2, 12);
-            street.ValidateLength(2, 20);
-            houseNumber.ValidateRange();
-            apartmentNumber.ValidateRange();
+            city.ValidateLength();
+            street.ValidateLength();
+            houseNumber.ValidateRange(1,400);
+            apartmentNumber.ValidateRange(1,999);
             City = city;
             Street = street;
             HouseNumber = houseNumber;
@@ -41,7 +41,7 @@ public abstract class Person : BaseData<Guid>
         }
     }
 
-    public abstract class Fio
+    public class Fio
     {
         /// <summary>
         /// Фамилия
@@ -62,12 +62,12 @@ public abstract class Person : BaseData<Guid>
         public string MiddleName { get; protected set; }
 
         /// <summary>
-        /// Конструктор для валидации и присваивания значений полям FIO
+        /// Конструктор для валидации и присваивания значений полям ФИО
         /// </summary>
         /// <param name="lastName">Фамилия</param>
         /// <param name="firstName">Имя</param>
         /// <param name="middleName">Отчество</param>
-        protected Fio(string lastName, string firstName, string middleName)
+        public Fio(string lastName, string firstName, string middleName)
         {
             lastName.ValidateLength();
             firstName.ValidateLength();

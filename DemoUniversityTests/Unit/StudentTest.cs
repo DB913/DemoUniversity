@@ -1,38 +1,56 @@
+using System.IO.Pipes;
 using Bogus;
 using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Models;
+using Person = DemoUniversity.Domain.Models.Person;
 
 namespace DemoUniversityTests.Unit;
 
 public class StudentTest
 {
-    // [Fact]
-    // public void SetCreateStudentPositiveTest()
-    // {
-    //     var studentId = Guid.NewGuid();
-    //     var faker = new Faker("ru");
-    //     var lastName = faker.Name.LastName();
-    //     var firstName = faker.Name.FirstName();
-    //     var middleName = faker.Name.FirstName();
-    //     var address = "street Cucueva 20/3. Part 10";
-    //     faker.Address.FullAddress();
-    //     var phone = "+37377941321";
-    //     var age = 25;
-    //     var speciality = "doctor";
-    //     var course = 4;
-    //
-    //     var student = new Student(studentId, lastName, firstName, middleName, address, phone, age, speciality, course);
-    //
-    //     Assert.True(student.Id == studentId);
-    //     Assert.True(student.LastName == lastName);
-    //     Assert.True(student.FirstName == firstName);
-    //     Assert.True(student.MiddleName == middleName);
-    //     Assert.True(student.Address == address);
-    //     Assert.True(student.Phone == phone);
-    //     Assert.True(student.Age == age);
-    //     Assert.True(student.Speciality == speciality);
-    //     Assert.True(student.Course == course);
-    // }
+    
+    [Fact]
+    public void SetCreateStudentPositiveTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+        
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+        
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent,streetStudent,houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+    
+        var student = new Student(studentId,fioStudent,studentAddress, phone, age, speciality, course);
+    
+        Assert.True(student.Id == studentId);
+        
+        Assert.True(student.PersonAddress.City == cityStudent);
+        Assert.True(student.PersonAddress.Street == streetStudent);
+        Assert.True(student.PersonAddress.HouseNumber == houseNumber);
+        Assert.True(student.PersonAddress.ApartmentNumber == apartmentNumber);
+
+        Assert.True(student.PersonFio.LastName == lastName);
+        Assert.True(student.PersonFio.FirstName == firstName);
+        Assert.True(student.PersonFio.MiddleName == middleName);
+        
+        Assert.True(student.Phone == phone);
+        Assert.True(student.Age == age);
+        Assert.True(student.Speciality == speciality);
+        Assert.True(student.Course == course);
+    }
 
     // [Fact]
     // public void SetCheckExceptionForPhoneNumberTest()
