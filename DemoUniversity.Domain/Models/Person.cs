@@ -34,10 +34,14 @@ public abstract class Person : BaseData<Guid>
         /// <param name="apartmentNumber">Номер квартиры</param>
         public void UpdateAddress(string city, string street, int houseNumber, int apartmentNumber)
         {
-            city.ValidateLength(2, 15);
-            street.ValidateLength(5, 20);
-            houseNumber.ValidateRange();
-            apartmentNumber.ValidateRange();
+            city.ValidateLength();
+            street.ValidateLength();
+            houseNumber.ValidateRange(1,400);
+            apartmentNumber.ValidateRange(1,999);
+            City = city;
+            Street = street;
+            HouseNumber = houseNumber;
+            ApartmentNumber = apartmentNumber;
         }
     }
 
@@ -47,19 +51,19 @@ public abstract class Person : BaseData<Guid>
         /// Фамилия
         /// </summary>
         /// <example>Иванов</example>
-        public string LastName { get; protected set; }
+        public string LastName { get; private set; }
 
         /// <summary>
         /// Имя
         /// </summary>
         /// <example>Сергей</example>
-        public string FirstName { get; protected set; }
+        public string FirstName { get; private set; }
 
         /// <summary>
         /// Отчество
         /// </summary>
         /// <example>Петрович</example>
-        public string MiddleName { get; protected set; }
+        public string MiddleName { get; private set; }
 
         /// <summary>
         /// Конструктор для валидации и присваивания значений полям ФИО
