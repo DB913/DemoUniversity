@@ -53,7 +53,8 @@ public class StudentTest
 
     [Theory]
     [InlineData("c")]
-    [InlineData("CheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTest")]
+    [InlineData(
+        "CheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTest")]
     [InlineData("")]
     public void CheckExceptionForInvalidCityTest(string cityStudent)
     {
@@ -66,7 +67,7 @@ public class StudentTest
         IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
-    
+
     [Fact]
     public void CheckExceptionForNullCityTest()
     {
@@ -83,9 +84,10 @@ public class StudentTest
 
     [Theory]
     [InlineData("c")]
-    [InlineData("CheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTest")]
+    [InlineData(
+        "CheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTestCheckExceptionForNullCityTest")]
     [InlineData("")]
-    public void CheckExceptionForInvalidStreetTest( string streetStudent)
+    public void CheckExceptionForInvalidStreetTest(string streetStudent)
     {
         var faker = new Faker("ru");
 
@@ -96,6 +98,7 @@ public class StudentTest
         IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
+
     [Fact]
     public void CheckExceptionForNullStreetTest()
     {
@@ -143,7 +146,7 @@ public class StudentTest
         IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
-    
+
     [Fact]
     public void CheckExceptionForZeroHouseNumberTest()
     {
@@ -289,16 +292,213 @@ public class StudentTest
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
+    [Theory]
+    [InlineData("d")]
+    [InlineData(
+        "d12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRest")]
+    [InlineData("")]
+    public void CheckExceptionForInvalidLastNameTest(string lastName)
+    {
+        var faker = new Faker("ru");
 
-    /* public void CheckCreateStudentWithAutoFixture()
-     {
-         Fixture fixture = new Fixture();
- 
-         Student student = fixture.Create<Student>();
- 
-         int expectedNumber = fixture.Create<int>();
- 
-         int result = student.Echo(expectedNumber);
- 
-     }*/
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+            new Person.Fio(lastName, firstName, middleName));
+    }
+
+    [Theory]
+    [InlineData("d")]
+    [InlineData(
+        "d12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRest")]
+    [InlineData("")]
+    public void CheckExceptionForInvalidFirstNameTest(string firstName)
+    {
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var middleName = faker.Name.FirstName();
+
+        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+            new Person.Fio(lastName, firstName, middleName));
+    }
+
+    [Theory]
+    [InlineData("d")]
+    [InlineData(
+        "d12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRestd12345678910TestRest")]
+    [InlineData("")]
+    public void CheckExceptionForInvalidMiddleNameTest(string middleName)
+    {
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+
+        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+            new Person.Fio(lastName, firstName, middleName));
+    }
+
+    [Fact]
+    public void CheckExceptionForNullLastNameStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        string lastName = null;
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+    }
+    [Fact]
+    public void CheckExceptionForNullFirstNameStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.FirstName();;
+        string firstName = null;
+        var middleName = faker.Name.FirstName();
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+    }
+    [Fact]
+    public void CheckExceptionForNullMiddleNameStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.FirstName();;
+        var firstName = faker.Name.FirstName();
+        string middleName = null;
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+    }
+
+    [Theory]
+    [InlineData(15)]
+    [InlineData(151)]
+    [InlineData(-5564)]
+    public void CheckExceptionForInvalidAgeStudentTest(int age)
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const string speciality = "doctor";
+        const int course = 4;
+
+        IncorrectRangeException ex =
+            Assert.Throws<IncorrectRangeException>(() =>
+                new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
+    }
+    
+    [Fact]
+    public void CheckExceptionForZeroAgeStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const string speciality = "doctor";
+        const int course = 4;
+        int age = 0;
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() =>
+                new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
+    }
+    
+    [Theory]
+    [InlineData("")]
+    [InlineData("151")]
+    [InlineData("534534534")]
+    [InlineData("37377941456")]
+    [InlineData("77941456")]
+    [InlineData("077941456")]
+    public void CheckExceptionForInvalidPhoneNumberStudentTest(string phone)
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string speciality = "doctor";
+        const int course = 4;
+        const int age = 25;
+
+        IncorrectStringException ex =
+            Assert.Throws<IncorrectStringException>(() =>
+                new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
+    }
+    [Fact]
+    public void CheckExceptionForNullPhoneNumberStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string speciality = "doctor";
+        const int course = 4;
+        const int age = 25;
+        const string phoneNumber = null;
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() =>
+                new Student(studentId, fioStudent, studentAddress, phoneNumber, age, speciality, course));
+    }
 }
