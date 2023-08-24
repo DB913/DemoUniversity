@@ -20,7 +20,7 @@ public static class StringExtensions
 
     public static void ValidateRange(this int input, int minValue = 16, int maxValue = 150)
     {
-        if (input <= 0)
+        if (input == 0)
         {
             throw new NullReferenceException("Значение не может быть меньше либо равным 0");
         }
@@ -38,24 +38,6 @@ public static class StringExtensions
         {
             throw new EmptyObjectException(
                 "Передаваемый объект не может быть null");
-        }
-    }
-
-    public static void ValidateEmptyString(this string? input)
-    {
-        if (input == null)
-        {
-            throw new ArgumentEmptyOrNullException(
-                "Передаваемое значение не может быть null");
-        }
-    }
-
-    public static void ValidateEmptyRange(this int? input)
-    {
-        if (input == 0)
-        {
-            throw new IncorrectRangeException(
-                "Передаваемое значение не может быть 0");
         }
     }
 }
