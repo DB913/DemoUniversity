@@ -8,10 +8,10 @@ public abstract class Person : BaseData<Guid>
 {
     public class Address
     {
-        public string City { get; set; }
-        public string Street { get; set; }
-        public int HouseNumber { get; set; }
-        public int ApartmentNumber { get; set; }
+        public string City { get; private set; }
+        public string Street { get; private set; }
+        public int HouseNumber { get; private set; }
+        public int ApartmentNumber { get; private set; }
 
         public Address(string city, string street, int houseNumber, int apartmentNumber)
         {

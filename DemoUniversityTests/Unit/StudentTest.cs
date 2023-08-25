@@ -822,7 +822,7 @@ public class StudentTest
 
         Assert.True(student.Phone == phoneUp);
     }
-    
+
     [Fact]
     public void CheckExceptionForNullAddressTest()
     {
@@ -839,9 +839,229 @@ public class StudentTest
         const int age = 25;
         const string speciality = "doctor";
         const int course = 4;
-        
+
         EmptyObjectException ex = Assert.Throws<EmptyObjectException>(() =>
             new Student(studentId, fioStudent, null, phone, age, speciality, course));
-
     }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(
+        "specialityUpspecialityUpspecialityUpspecialityUpspecialityUpspecialityUpspecialityUpspecialityUpspecialityUpspecialityUpspecialityUp")]
+    [InlineData("u")]
+    public void CheckExceptionForUpdateInvalidSpecialityTest(string specialityUp)
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "testRest";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+        
+        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+            student.UpdateStudentSpeciality(specialityUp));
+    }
+    
+    [Fact]
+    public void CheckExceptionForUpdateNullSpecialityTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "testRest";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+        
+        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+            student.UpdateStudentSpeciality(null));
+    }
+    
+    [Fact]
+    public void UpdateSpecialityStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        string speciality = "testRest";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        speciality += "Up";
+        
+        student.UpdateStudentSpeciality(speciality);
+        
+        Assert.True(student.Speciality == speciality);
+        Assert.Contains("Up", student.Speciality);
+    }
+    [Fact]
+    public void UpdateCourseStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "testRest";
+        var course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        course += + 1;
+        student.UpdateStudentCourse(course);
+        
+        Assert.True(student.Course == course);
+    }
+    [Theory]
+    [InlineData(-5)]
+    [InlineData(6464)]
+    public void CheckExceptionForUpdateCourseStudentTest(int courseUp)
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "testRest";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+        
+        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+            student.UpdateStudentCourse(courseUp));
+    }
+    
+    [Fact]
+    public void CheckExceptionForZeroUpdateCourseStudentTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "testRest";
+        var course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        course = 0;
+        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+            student.UpdateStudentCourse(course));
+    }
+
+    [Fact]
+    public void CheckExceptionForInvalidId()
+    {
+        var studentId = Guid.Empty;
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "testRest";
+        const int course = 4;
+        
+        IncorrectIdException ex = Assert.Throws<IncorrectIdException>(() =>
+            new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
+    }
+    
+    
 }

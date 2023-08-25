@@ -12,9 +12,8 @@ public class Teacher : Person
     /// <param name="fio"></param>
     /// <param name="address">Адрес</param>
     /// <param name="phone">Номер телефона</param>
-    /// <param name="departmentId">Id кафедры</param>
-    /// <param name="disciplineId">Id дисциплины</param>
-    public Teacher(Guid id, Fio fio, Address address, string phone, int age) : base(id, fio, address, phone, age)
+    public Teacher(Guid id, Fio fio, Address address, string phone, int age) 
+        : base(id, fio, address, phone, age)
     {
         
     }

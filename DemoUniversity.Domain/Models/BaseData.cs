@@ -1,4 +1,6 @@
-﻿namespace DemoUniversity.Domain.Models;
+﻿using DemoUniversity.Domain.Exceptions;
+
+namespace DemoUniversity.Domain.Models;
 
 public abstract class BaseData<TId> where TId : struct
 {
@@ -14,7 +16,7 @@ public abstract class BaseData<TId> where TId : struct
     {
         if (EqualityComparer<TId>.Default.Equals(id, default))
         {
-            throw new ArgumentException("Некорректное значение id");
+            throw new IncorrectIdException("Некорректное значение id");
         }
     }
 }

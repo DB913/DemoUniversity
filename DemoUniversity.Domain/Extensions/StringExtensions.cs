@@ -8,11 +8,11 @@ public static class StringExtensions
     {
         if (input.Equals(null))
         {
-            throw new ArgumentEmptyOrNullException(
+            throw new NullReferenceException(
                 "Передаваемое значение не может быть null");
         }
 
-        if (input!.Length < minSize || input.Length > maxSize)
+        if (input.Length < minSize || input.Length > maxSize)
         {
             throw new IncorrectStringLengthException($"Длина должна быть от {minSize} до {maxSize} символов");
         }

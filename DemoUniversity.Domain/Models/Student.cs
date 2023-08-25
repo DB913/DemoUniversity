@@ -50,7 +50,6 @@ public class Student : Person
     /// <param name="course">Обновленный курс</param>
     public void UpdateStudentCourse(int course)
     {
-        //course.ValidateEmptyRange();
         course.ValidateRange(1, 6);
         Course = course;
     }
