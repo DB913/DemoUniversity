@@ -17,8 +17,8 @@ public abstract class Person : BaseData<Guid>
         {
             city.ValidateLength();
             street.ValidateLength();
-            houseNumber.ValidateRange(1,400);
-            apartmentNumber.ValidateRange(1,999);
+            houseNumber.ValidateRange(1, 400);
+            apartmentNumber.ValidateRange(1, 999);
             City = city;
             Street = street;
             HouseNumber = houseNumber;
@@ -36,8 +36,8 @@ public abstract class Person : BaseData<Guid>
         {
             city.ValidateLength();
             street.ValidateLength();
-            houseNumber.ValidateRange(1,400);
-            apartmentNumber.ValidateRange(1,999);
+            houseNumber.ValidateRange(1, 400);
+            apartmentNumber.ValidateRange(1, 999);
             City = city;
             Street = street;
             HouseNumber = houseNumber;
@@ -113,12 +113,12 @@ public abstract class Person : BaseData<Guid>
     /// <summary>
     /// Адрес
     /// </summary>
-    public Address PersonAddress { get; set; }
+    public Address PersonAddress { get; private set; }
 
     /// <summary>
     /// ФИО
     /// </summary>
-    public Fio PersonFio { get; set; }
+    public Fio PersonFio { get; private set; }
 
     protected Person(Guid id, Fio fio, Address address, string phone, int age) : base(id)
     {
@@ -154,6 +154,32 @@ public abstract class Person : BaseData<Guid>
         Phone = phone;
     }
 
+    /// <summary>
+    /// Метод для обновления адреса 
+    /// </summary>
+    /// <param name="personAddress">Объект, который принимает 4 параметра: city, street, houseNumber, apartmentNumber</param>
+    public void UpdateStudentAddress(Address personAddress)
+    {
+        personAddress.ValidateEmptyObject();
+        PersonAddress = personAddress;
+    }
+
+    /// <summary>
+    /// Метод для обновления ФИО студента
+    /// </summary>
+    /// <param name="personFio">Объект, который принимает 4 параметра: city, street, houseNumber, apartmentNumber</param>
+    public void UpdateStudentFio(Fio personFio)
+    {
+        personFio.ValidateEmptyObject();
+        PersonFio = personFio;
+    }
+
+    /// <summary>
+    /// Метод для валидации номера телефона
+    /// </summary>
+    /// <param name="phoneNumber"></param>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="IncorrectStringException"></exception>
     private static void ValidatePhoneNumber(string phoneNumber)
     {
         if (phoneNumber == null)
