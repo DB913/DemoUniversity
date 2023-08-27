@@ -22,7 +22,7 @@ public static class StringExtensions
     {
         if (input == 0)
         {
-            throw new NullReferenceException("Значение не может быть меньше либо равным 0");
+            throw new NullReferenceException("Значение не может равным 0");
         }
 
         if (input < minValue || input > maxValue)
