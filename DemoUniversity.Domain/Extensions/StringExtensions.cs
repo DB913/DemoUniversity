@@ -6,7 +6,7 @@ public static class StringExtensions
 {
     public static void ValidateLength(this string input, int minSize = 2, int maxSize = 60)
     {
-        if (input.Equals(null))
+        if (input==null)
         {
             throw new NullReferenceException(
                 "Передаваемое значение не может быть null");
