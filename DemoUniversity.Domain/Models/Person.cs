@@ -155,26 +155,6 @@ public abstract class Person : BaseData<Guid>
     }
 
     /// <summary>
-    /// Метод для обновления адреса 
-    /// </summary>
-    /// <param name="personAddress">Объект, который принимает 4 параметра: city, street, houseNumber, apartmentNumber</param>
-    public void UpdateStudentAddress(Address personAddress)
-    {
-        personAddress.ValidateEmptyObject();
-        PersonAddress = personAddress;
-    }
-
-    /// <summary>
-    /// Метод для обновления ФИО студента
-    /// </summary>
-    /// <param name="personFio">Объект, который принимает 4 параметра: city, street, houseNumber, apartmentNumber</param>
-    public void UpdateStudentFio(Fio personFio)
-    {
-        personFio.ValidateEmptyObject();
-        PersonFio = personFio;
-    }
-
-    /// <summary>
     /// Метод для валидации номера телефона
     /// </summary>
     /// <param name="phoneNumber"></param>
