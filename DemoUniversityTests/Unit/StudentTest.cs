@@ -1041,6 +1041,7 @@ public class StudentTest
         IncorrectIdException ex = Assert.Throws<IncorrectIdException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
+
     [Fact]
     public void CheckExceptionForUpdateNullLastNameStudentTest()
     {
@@ -1058,7 +1059,6 @@ public class StudentTest
 
         NullReferenceException ex =
             Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
-        
     }
 
     [Fact]
@@ -1078,7 +1078,6 @@ public class StudentTest
 
         NullReferenceException ex =
             Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
-
     }
 
     [Fact]
@@ -1098,5 +1097,63 @@ public class StudentTest
 
         NullReferenceException ex =
             Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+    }
+
+    [Theory]
+    [InlineData(-5)]
+    [InlineData(-200)]
+    [InlineData(10)]
+    public void CheckExceptionForUpdateAgeTest(int ageUp)
+    {
+        var teacherId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityTeacher = faker.Address.City();
+        var streetTeacher = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityTeacher, streetTeacher, houseNumber, apartmentNumber);
+
+        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+
+        var teacher = new Teacher(teacherId, fioTeacher, studentAddress, phone, age);
+
+        IncorrectRangeException ex =
+            Assert.Throws<IncorrectRangeException>(() => teacher.UpdateAge(ageUp));
+    }
+    [Fact]
+    public void CheckExceptionForUpdateZeroAgeTest()
+    {
+        var teacherId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityTeacher = faker.Address.City();
+        var streetTeacher = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Person.Address(cityTeacher, streetTeacher, houseNumber, apartmentNumber);
+
+        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+
+        var teacher = new Teacher(teacherId, fioTeacher, studentAddress, phone, age);
+        const int ageUp = 0;
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() => teacher.UpdateAge(ageUp));
     }
 }
