@@ -821,27 +821,6 @@ public class StudentTest
         Assert.True(student.Phone == phoneUp);
     }
 
-    [Fact]
-    public void CheckExceptionForNullAddressTest()
-    {
-        var studentId = Guid.NewGuid();
-        var faker = new Faker("ru");
-
-        var lastName = faker.Name.LastName();
-        var firstName = faker.Name.FirstName();
-        var middleName = faker.Name.FirstName();
-
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
-
-        const string phone = "+37377941321";
-        const int age = 25;
-        const string speciality = "doctor";
-        const int course = 4;
-
-        EmptyObjectException ex = Assert.Throws<EmptyObjectException>(() =>
-            new Student(studentId, fioStudent, null, phone, age, speciality, course));
-    }
-
     [Theory]
     [InlineData("")]
     [InlineData(

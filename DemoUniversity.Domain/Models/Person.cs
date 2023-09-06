@@ -15,14 +15,63 @@ public abstract class Person : BaseData<Guid>
 
         public Address(string city, string street, int houseNumber, int apartmentNumber)
         {
-            city.ValidateLength();
-            street.ValidateLength();
-            houseNumber.ValidateRange(1, 400);
-            apartmentNumber.ValidateRange(1, 999);
-            City = city;
-            Street = street;
-            HouseNumber = houseNumber;
-            ApartmentNumber = apartmentNumber;
+            if (city == null)
+            {
+                throw new NullReferenceException("Значение не может быть null");
+            }
+
+            if (street == null)
+            {
+                throw new NullReferenceException("Значение не может быть null");
+            }
+
+            if (houseNumber == 0)
+            {
+                throw new NullReferenceException("Значение не может быть 0");
+            }
+
+            if (apartmentNumber == 0)
+            {
+                throw new NullReferenceException("Значение не может быть 0");
+            }
+
+            if (city.CheckStringLength())
+            {
+                City = city;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+            if (street.CheckStringLength())
+            {
+                Street = street;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+            if (houseNumber.CheckRange(1, 400))
+            {
+                HouseNumber = houseNumber;
+            }
+            else
+            {
+                throw new IncorrectRangeException(
+                    $"Допустимый диапозон принимаемых значений от {1} до {400}");
+            }
+
+            if (apartmentNumber.CheckRange(1, 999))
+            {
+                ApartmentNumber = apartmentNumber;
+            }
+            else
+            {
+                throw new IncorrectRangeException(
+                    $"Допустимый диапозон принимаемых значений от {1} до {999}");
+            }
         }
 
         /// <summary>
@@ -34,14 +83,66 @@ public abstract class Person : BaseData<Guid>
         /// <param name="apartmentNumber">Номер квартиры</param>
         public void UpdateAddress(string city, string street, int houseNumber, int apartmentNumber)
         {
-            city.ValidateLength();
-            street.ValidateLength();
-            houseNumber.ValidateRange(1, 400);
-            apartmentNumber.ValidateRange(1, 999);
-            City = city;
-            Street = street;
-            HouseNumber = houseNumber;
-            ApartmentNumber = apartmentNumber;
+            if (city == null)
+            {
+                throw new NullReferenceException("Значение не может быть null");
+            }
+
+            if (street == null)
+            {
+                throw new NullReferenceException("Значение не может быть null");
+            }
+
+            if (houseNumber == 0)
+            {
+                throw new NullReferenceException("Значение не может быть 0");
+            }
+
+            if (apartmentNumber == 0)
+            {
+                throw new NullReferenceException("Значение не может быть 0");
+            }
+
+            if (city.CheckStringLength())
+            {
+                City = city;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+
+            if (street.CheckStringLength())
+            {
+                Street = street;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+
+            if (houseNumber.CheckRange(1, 400))
+            {
+                HouseNumber = houseNumber;
+            }
+            else
+            {
+                throw new IncorrectRangeException(
+                    $"Допустимый диапозон принимаемых значений от {1} до {400}");
+            }
+
+
+            if (apartmentNumber.CheckRange(1, 999))
+            {
+                ApartmentNumber = apartmentNumber;
+            }
+            else
+            {
+                throw new IncorrectRangeException(
+                    $"Допустимый диапозон принимаемых значений от {1} до {999}");
+            }
         }
     }
 
@@ -73,12 +174,50 @@ public abstract class Person : BaseData<Guid>
         /// <param name="middleName">Отчество</param>
         public Fio(string lastName, string firstName, string middleName)
         {
-            lastName.ValidateLength();
-            firstName.ValidateLength();
-            middleName.ValidateLength();
-            LastName = lastName;
-            FirstName = firstName;
-            MiddleName = middleName;
+            if (middleName == null)
+            {
+                throw new NullReferenceException(
+                    "Передаваемое значение не может быть null");
+            }
+
+            if (lastName == null)
+            {
+                throw new NullReferenceException(
+                    "Передаваемое значение не может быть null");
+            }
+
+            if (firstName == null)
+            {
+                throw new NullReferenceException(
+                    "Передаваемое значение не может быть null");
+            }
+
+            if (lastName.CheckStringLength())
+            {
+                LastName = lastName;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+            if (middleName.CheckStringLength())
+            {
+                MiddleName = middleName;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+            if (firstName.CheckStringLength())
+            {
+                FirstName = firstName;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
         }
 
         /// <summary>
@@ -89,12 +228,51 @@ public abstract class Person : BaseData<Guid>
         /// <param name="middleName">Отчество</param>
         public void UpdateFio(string lastName, string firstName, string middleName)
         {
-            lastName.ValidateLength();
-            firstName.ValidateLength();
-            middleName.ValidateLength();
-            LastName = lastName;
-            FirstName = firstName;
-            MiddleName = middleName;
+            if (middleName == null)
+            {
+                throw new NullReferenceException(
+                    "Передаваемое значение не может быть null");
+            }
+
+            if (lastName == null)
+            {
+                throw new NullReferenceException(
+                    "Передаваемое значение не может быть null");
+            }
+
+            if (firstName == null)
+            {
+                throw new NullReferenceException(
+                    "Передаваемое значение не может быть null");
+            }
+
+            if (lastName.CheckStringLength())
+            {
+                LastName = lastName;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+            if (middleName.CheckStringLength())
+            {
+                MiddleName = middleName;
+            }
+
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
+
+            if (firstName.CheckStringLength())
+            {
+                FirstName = firstName;
+            }
+            else
+            {
+                throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            }
         }
     }
 
@@ -122,15 +300,26 @@ public abstract class Person : BaseData<Guid>
 
     protected Person(Guid id, Fio fio, Address address, string phone, int age) : base(id)
     {
-        address.ValidateEmptyObject();
-        fio.ValidateEmptyObject();
-        age.ValidateRange();
+        if (age == 0)
+        {
+            throw new NullReferenceException("Значение не может быть равным 0");
+        }
+
+        if (age.CheckRange())
+        {
+            Age = age;
+        }
+        else
+        {
+            throw new IncorrectRangeException(
+                $"Допустимый диапозон принимаемых значений от {16} до {150}");
+        }
+
         ValidatePhoneNumber(phone);
 
-        Phone = phone;
-        Age = age;
-
         PersonAddress = address;
+        Phone = phone;
+
         PersonFio = fio;
     }
 
@@ -140,8 +329,20 @@ public abstract class Person : BaseData<Guid>
     /// <param name="age">Возраст</param>
     public void UpdateAge(int age)
     {
-        age.ValidateRange();
-        Age = age;
+        if (age == 0)
+        {
+            throw new NullReferenceException("Значение не может быть равным 0");
+        }
+
+        if (age.CheckRange())
+        {
+            Age = age;
+        }
+        else
+        {
+            throw new IncorrectRangeException(
+                $"Допустимый диапозон принимаемых значений от {16} до {150}");
+        }
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using DemoUniversity.Domain.Extensions;
+﻿using DemoUniversity.Domain.Exceptions;
+using DemoUniversity.Domain.Extensions;
 
 namespace DemoUniversity.Domain.Models;
 
@@ -28,10 +29,29 @@ public class Student : Person
         int age,
         string speciality, int course) : base(id,fio, address, phone, age)
     {
-        speciality.ValidateLength(2, 10);
-        course.ValidateRange(1, 6);
-        Speciality = speciality;
-        Course = course;
+        const int minValue = 1;
+        const int maxValue = 6;
+        if (course==0)
+        {
+            throw new NullReferenceException("Значение не может равным 0");
+        }
+        if (course.CheckRange(minValue,maxValue))
+        {
+            Course = course;
+        }
+        else
+        {
+            throw new IncorrectRangeException($"Допустимый диапозон принимаемых значений от {minValue} до {maxValue}");
+        }
+
+        if (speciality.CheckStringLength(2,10))
+        {
+            Speciality = speciality;
+        }
+        else
+        {
+            throw new IncorrectStringLengthException($"Длина должна быть от {2} до {10} символов");
+        }
     }
 
     /// <summary>
@@ -40,7 +60,19 @@ public class Student : Person
     /// <param name="speciality">Новая специальность</param>
     public void UpdateStudentSpeciality(string speciality)
     {
-        speciality.ValidateLength(2, 10);
+        if (speciality==null)
+        {
+            throw new NullReferenceException(
+                "Передаваемое значение не может быть null");
+        }
+        if (speciality.CheckStringLength(2,10))
+        {
+            Speciality = speciality;
+        }
+        else
+        {
+            throw new IncorrectStringLengthException($"Длина должна быть от {2} до {10} символов");
+        }
         Speciality = speciality;
     }
 
@@ -50,7 +82,17 @@ public class Student : Person
     /// <param name="course">Обновленный курс</param>
     public void UpdateStudentCourse(int course)
     {
-        course.ValidateRange(1, 6);
-        Course = course;
+        if (course==0)
+        {
+            throw new NullReferenceException("Значение не может равным 0");
+        }
+        if (course.CheckRange(1,6))
+        {
+            Course = course;
+        }
+        else
+        {
+            throw new IncorrectRangeException($"Допустимый диапозон принимаемых значений от {1} до {6}");
+        }
     }
 }
