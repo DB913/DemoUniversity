@@ -1041,4 +1041,62 @@ public class StudentTest
         IncorrectIdException ex = Assert.Throws<IncorrectIdException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
+    [Fact]
+    public void CheckExceptionForUpdateNullLastNameStudentTest()
+    {
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        string lastNameUp = null;
+        var firstNameUp = faker.Name.FirstName() + "Up";
+        var middleNameUp = faker.Name.FirstName() + "Up";
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        
+    }
+
+    [Fact]
+    public void CheckExceptionForUpdateNullFirstNameStudentTest()
+    {
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        string firstNameUp = null;
+        var lastNameUp = faker.Name.FirstName() + "Up";
+        var middleNameUp = faker.Name.FirstName() + "Up";
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+
+    }
+
+    [Fact]
+    public void CheckExceptionForUpdateNullMiddleNameStudentTest()
+    {
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+
+        string middleNameUp = null;
+        var lastNameUp = faker.Name.FirstName() + "Up";
+        var firstNameUp = faker.Name.FirstName() + "Up";
+
+        NullReferenceException ex =
+            Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+    }
 }
