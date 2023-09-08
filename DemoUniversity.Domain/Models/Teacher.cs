@@ -1,4 +1,6 @@
-﻿namespace DemoUniversity.Domain.Models;
+﻿using DemoUniversity.Domain.Models.Helpers;
+
+namespace DemoUniversity.Domain.Models;
 
 public class Teacher : Person
 {
@@ -10,7 +12,7 @@ public class Teacher : Person
     /// <param name="fio"></param>
     /// <param name="address">Адрес</param>
     /// <param name="phone">Номер телефона</param>
-    public Teacher(Guid id, Fio fio, Address address, string phone, int age)
+    public Teacher(Guid id, PersonName fio, Address address, string phone, int age)
         : base(id, fio, address, phone, age)
     {
     }

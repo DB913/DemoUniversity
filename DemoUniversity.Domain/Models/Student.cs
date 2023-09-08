@@ -1,5 +1,6 @@
 ﻿using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Extensions;
+using DemoUniversity.Domain.Models.Helpers;
 
 namespace DemoUniversity.Domain.Models;
 
@@ -25,7 +26,7 @@ public class Student : Person
     /// <param name="fio">ФИО</param>
     /// <param name="address">Адрес</param>
     /// <param name="phone">Номер телефона</param>
-    public Student(Guid id, Fio fio, Address address, string phone,
+    public Student(Guid id, PersonName fio, Address address, string phone,
         int age,
         string speciality, int course) : base(id,fio, address, phone, age)
     {

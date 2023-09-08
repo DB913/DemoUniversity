@@ -1,7 +1,7 @@
 using Bogus;
 using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Models;
-using Person = DemoUniversity.Domain.Models.Person;
+using DemoUniversity.Domain.Models.Helpers;
 
 namespace DemoUniversityTests.Unit;
 
@@ -25,9 +25,9 @@ public class TeacherTest
         const string phone = "+37377941321";
         const int age = 25;
 
-        var address = new Person.Address(city, street, houseNumber, apartmentNumber);
+        var address = new Address(city, street, houseNumber, apartmentNumber);
 
-        var fio = new Person.Fio(lastName, firstName, middleName);
+        var fio = new PersonName(lastName, firstName, middleName);
 
         var teacher = new Teacher(teacherId, fio, address, phone, age);
 
@@ -50,7 +50,7 @@ public class TeacherTest
         var middleName = faker.Name.FirstName();
 
        Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Fio(lastName, firstName, middleName));
+            new PersonName(lastName, firstName, middleName));
     }
 
     [Theory]
@@ -66,7 +66,7 @@ public class TeacherTest
         var middleName = faker.Name.FirstName();
 
        Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Fio(lastName, firstName, middleName));
+            new PersonName(lastName, firstName, middleName));
     }
 
     [Theory]
@@ -82,7 +82,7 @@ public class TeacherTest
         var firstName = faker.Name.FirstName();
 
        Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Fio(lastName, firstName, middleName));
+            new PersonName(lastName, firstName, middleName));
     }
 
     [Fact]
@@ -100,9 +100,9 @@ public class TeacherTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var teacherAddress = new Person.Address(city, streetStudent, houseNumber, apartmentNumber);
+        var teacherAddress = new Address(city, streetStudent, houseNumber, apartmentNumber);
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -125,7 +125,7 @@ public class TeacherTest
         const int apartmentNumber = 5;
 
       Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Address(city, streetTeacher, houseNumber, apartmentNumber));
+            new Address(city, streetTeacher, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -142,7 +142,7 @@ public class TeacherTest
         const int apartmentNumber = 5;
 
        Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Address(city, streetTeacher, houseNumber, apartmentNumber));
+            new Address(city, streetTeacher, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -157,7 +157,7 @@ public class TeacherTest
         const int apartmentNumber = 5;
 
       Assert.Throws<IncorrectRangeException>(() =>
-            new Person.Address(city, streetTeacher, houseNumber, apartmentNumber));
+            new Address(city, streetTeacher, houseNumber, apartmentNumber));
     }
 
     [Fact]
@@ -169,7 +169,7 @@ public class TeacherTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         string lastNameUp = null;
         var firstNameUp = faker.Name.FirstName() + "Up";
@@ -187,7 +187,7 @@ public class TeacherTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         string firstNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
@@ -205,7 +205,7 @@ public class TeacherTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         string middleNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
@@ -229,9 +229,9 @@ public class TeacherTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -262,7 +262,7 @@ public class TeacherTest
         var lastName = faker.Name.LastName();
         var middleName = faker.Name.FirstName();
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         var firstNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
@@ -285,7 +285,7 @@ public class TeacherTest
         var lastName = faker.Name.LastName();
         var middleName = faker.Name.FirstName();
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         var lastNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
@@ -308,7 +308,7 @@ public class TeacherTest
         var lastName = faker.Name.LastName();
         var middleName = faker.Name.FirstName();
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         var lastNameUp = faker.Name.FirstName() + "Up";
         var firstNameUp = faker.Name.FirstName() + "Up";

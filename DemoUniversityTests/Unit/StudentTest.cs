@@ -1,7 +1,7 @@
 using Bogus;
 using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Models;
-using Person = DemoUniversity.Domain.Models.Person;
+using DemoUniversity.Domain.Models.Helpers;
 
 namespace DemoUniversityTests.Unit;
 
@@ -22,9 +22,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -64,7 +64,7 @@ public class StudentTest
         const int apartmentNumber = 5;
 
         Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Fact]
@@ -78,7 +78,7 @@ public class StudentTest
         const int apartmentNumber = 5;
 
         Assert.Throws<NullReferenceException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -95,7 +95,7 @@ public class StudentTest
         const int apartmentNumber = 5;
 
         Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Fact]
@@ -109,7 +109,7 @@ public class StudentTest
         const int apartmentNumber = 5;
 
         Assert.Throws<NullReferenceException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -126,7 +126,7 @@ public class StudentTest
         const int apartmentNumber = 5;
 
         Assert.Throws<IncorrectRangeException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -143,7 +143,7 @@ public class StudentTest
         const int houseNumber = 256;
 
         Assert.Throws<IncorrectRangeException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Fact]
@@ -157,7 +157,7 @@ public class StudentTest
         const int apartmentNumber = 5;
 
         Assert.Throws<NullReferenceException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Fact]
@@ -171,7 +171,7 @@ public class StudentTest
         const int apartmentNumber = 0;
 
         Assert.Throws<NullReferenceException>(() =>
-            new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -192,9 +192,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -222,9 +222,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -250,9 +250,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -278,9 +278,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -304,7 +304,7 @@ public class StudentTest
         var middleName = faker.Name.FirstName();
 
         Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Fio(lastName, firstName, middleName));
+            new PersonName(lastName, firstName, middleName));
     }
 
     [Theory]
@@ -320,7 +320,7 @@ public class StudentTest
         var middleName = faker.Name.FirstName();
 
         Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Fio(lastName, firstName, middleName));
+            new PersonName(lastName, firstName, middleName));
     }
 
     [Theory]
@@ -336,7 +336,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
 
         Assert.Throws<IncorrectStringLengthException>(() =>
-            new Person.Fio(lastName, firstName, middleName));
+            new PersonName(lastName, firstName, middleName));
     }
 
     [Fact]
@@ -349,7 +349,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, firstName, middleName));
     }
 
     [Fact]
@@ -363,7 +363,7 @@ public class StudentTest
         string firstName = null;
         var middleName = faker.Name.FirstName();
 
-        Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, firstName, middleName));
     }
 
     [Fact]
@@ -376,7 +376,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         string middleName = null;
 
-        Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, firstName, middleName));
     }
 
     [Theory]
@@ -397,9 +397,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const string speciality = "doctor";
@@ -424,9 +424,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const string speciality = "doctor";
@@ -458,9 +458,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string speciality = "doctor";
         const int course = 4;
@@ -485,9 +485,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string speciality = "doctor";
         const int course = 4;
@@ -513,9 +513,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -551,7 +551,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         var streetStudentUp = faker.Address.StreetName() + "Up";
         const int houseNumberUp = 45 + houseNumber;
@@ -571,7 +571,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         string cityStudentUp = null;
         var streetStudentUp = faker.Address.StreetName() + "Up";
@@ -596,7 +596,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         var cityStudentUp = faker.Address.City() + "Up";
         const int houseNumberUp = 45 + houseNumber;
@@ -616,7 +616,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         var cityStudentUp = faker.Address.City() + "Up";
         string streetStudentUp = null;
@@ -639,7 +639,7 @@ public class StudentTest
         const int apartmentNumber = 5;
         const int houseNumber = 56;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         var cityStudentUp = faker.Address.City() + "Up";
         var streetStudentUp = faker.Address.StreetName() + "Up";
@@ -659,7 +659,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         var cityStudentUp = faker.Address.City() + "Up";
         var streetStudentUp = faker.Address.StreetName() + "Up";
@@ -682,7 +682,7 @@ public class StudentTest
         const int apartmentNumber = 5;
         const int houseNumber = 56;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         var cityStudentUp = faker.Address.City() + "Up";
         var streetStudentUp = faker.Address.StreetName() + "Up";
@@ -702,7 +702,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
         var cityStudentUp = faker.Address.City() + "Up";
         var streetStudentUp = faker.Address.StreetName() + "Up";
@@ -728,9 +728,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -765,9 +765,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -797,9 +797,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -833,9 +833,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -863,9 +863,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -893,9 +893,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -927,9 +927,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -961,9 +961,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -991,9 +991,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -1022,9 +1022,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -1044,7 +1044,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         string lastNameUp = null;
         var firstNameUp = faker.Name.FirstName() + "Up";
@@ -1062,7 +1062,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         string firstNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
@@ -1080,7 +1080,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        var fioStudent = new Person.Fio(lastName, firstName, middleName);
+        var fioStudent = new PersonName(lastName, firstName, middleName);
 
         string middleNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
@@ -1107,9 +1107,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityTeacher, streetTeacher, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityTeacher, streetTeacher, houseNumber, apartmentNumber);
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
@@ -1134,9 +1134,9 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        var studentAddress = new Person.Address(cityTeacher, streetTeacher, houseNumber, apartmentNumber);
+        var studentAddress = new Address(cityTeacher, streetTeacher, houseNumber, apartmentNumber);
 
-        var fioTeacher = new Person.Fio(lastName, firstName, middleName);
+        var fioTeacher = new PersonName(lastName, firstName, middleName);
 
         const string phone = "+37377941321";
         const int age = 25;
