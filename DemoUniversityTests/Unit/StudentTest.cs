@@ -63,7 +63,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -77,7 +77,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -94,7 +94,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -108,7 +108,7 @@ public class StudentTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -125,7 +125,7 @@ public class StudentTest
         var streetStudent = faker.Address.StreetName();
         const int apartmentNumber = 5;
 
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+        Assert.Throws<IncorrectRangeException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -142,7 +142,7 @@ public class StudentTest
         var streetStudent = faker.Address.StreetName();
         const int houseNumber = 256;
 
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+        Assert.Throws<IncorrectRangeException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -156,7 +156,7 @@ public class StudentTest
         const int houseNumber = 0;
         const int apartmentNumber = 5;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -170,7 +170,7 @@ public class StudentTest
         const int houseNumber = 256;
         const int apartmentNumber = 0;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             new Person.Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
     }
 
@@ -200,7 +200,7 @@ public class StudentTest
         const int age = 25;
         const int course = 4;
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
@@ -230,7 +230,7 @@ public class StudentTest
         const int age = 25;
         const string speciality = "doctor";
 
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+        Assert.Throws<IncorrectRangeException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
@@ -259,7 +259,7 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 0;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
@@ -287,7 +287,7 @@ public class StudentTest
         const string speciality = null;
         const int course = 4;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
@@ -303,7 +303,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Fio(lastName, firstName, middleName));
     }
 
@@ -319,7 +319,7 @@ public class StudentTest
         var lastName = faker.Name.LastName();
         var middleName = faker.Name.FirstName();
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Fio(lastName, firstName, middleName));
     }
 
@@ -335,7 +335,7 @@ public class StudentTest
         var lastName = faker.Name.LastName();
         var firstName = faker.Name.FirstName();
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Fio(lastName, firstName, middleName));
     }
 
@@ -349,8 +349,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
     }
 
     [Fact]
@@ -364,8 +363,7 @@ public class StudentTest
         string firstName = null;
         var middleName = faker.Name.FirstName();
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
     }
 
     [Fact]
@@ -378,8 +376,7 @@ public class StudentTest
         var firstName = faker.Name.FirstName();
         string middleName = null;
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new Person.Fio(lastName, firstName, middleName));
     }
 
     [Theory]
@@ -408,9 +405,8 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 4;
 
-        IncorrectRangeException ex =
-            Assert.Throws<IncorrectRangeException>(() =>
-                new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
+        Assert.Throws<IncorrectRangeException>(() =>
+            new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
     [Fact]
@@ -435,11 +431,10 @@ public class StudentTest
         const string phone = "+37377941321";
         const string speciality = "doctor";
         const int course = 4;
-        int age = 0;
+        const int age = 0;
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() =>
-                new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
+        Assert.Throws<NullReferenceException>(() =>
+            new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
     [Theory]
@@ -471,9 +466,8 @@ public class StudentTest
         const int course = 4;
         const int age = 25;
 
-        IncorrectStringException ex =
-            Assert.Throws<IncorrectStringException>(() =>
-                new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
+        Assert.Throws<IncorrectStringException>(() =>
+            new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
     [Fact]
@@ -500,9 +494,8 @@ public class StudentTest
         const int age = 25;
         const string phoneNumber = null;
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() =>
-                new Student(studentId, fioStudent, studentAddress, phoneNumber, age, speciality, course));
+        Assert.Throws<NullReferenceException>(() =>
+            new Student(studentId, fioStudent, studentAddress, phoneNumber, age, speciality, course));
     }
 
     [Fact]
@@ -564,7 +557,7 @@ public class StudentTest
         const int houseNumberUp = 45 + houseNumber;
         const int apartmentNumberUp = 5 + apartmentNumber;
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -585,7 +578,7 @@ public class StudentTest
         const int houseNumberUp = 45 + houseNumber;
         const int apartmentNumberUp = 5 + apartmentNumber;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -609,7 +602,7 @@ public class StudentTest
         const int houseNumberUp = 45 + houseNumber;
         const int apartmentNumberUp = 5 + apartmentNumber;
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -630,7 +623,7 @@ public class StudentTest
         const int houseNumberUp = 45 + houseNumber;
         const int apartmentNumberUp = 5 + apartmentNumber;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -652,7 +645,7 @@ public class StudentTest
         var streetStudentUp = faker.Address.StreetName() + "Up";
         const int apartmentNumberUp = 5 + apartmentNumber;
 
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+        Assert.Throws<IncorrectRangeException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -673,7 +666,7 @@ public class StudentTest
         const int houseNumberUp = 0;
         const int apartmentNumberUp = 5 + apartmentNumber;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -695,7 +688,7 @@ public class StudentTest
         var streetStudentUp = faker.Address.StreetName() + "Up";
         var houseNumberUp = 56;
 
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+        Assert.Throws<IncorrectRangeException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -716,7 +709,7 @@ public class StudentTest
         const int houseNumberUp = 46;
         const int apartmentNumberUp = 0;
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
     }
 
@@ -851,7 +844,7 @@ public class StudentTest
 
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             student.UpdateStudentSpeciality(specialityUp));
     }
 
@@ -881,7 +874,7 @@ public class StudentTest
 
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             student.UpdateStudentSpeciality(null));
     }
 
@@ -979,7 +972,7 @@ public class StudentTest
 
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+        Assert.Throws<IncorrectRangeException>(() =>
             student.UpdateStudentCourse(courseUp));
     }
 
@@ -1010,7 +1003,7 @@ public class StudentTest
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
         course = 0;
-        NullReferenceException ex = Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<NullReferenceException>(() =>
             student.UpdateStudentCourse(course));
     }
 
@@ -1038,7 +1031,7 @@ public class StudentTest
         const string speciality = "testRest";
         const int course = 4;
 
-        IncorrectIdException ex = Assert.Throws<IncorrectIdException>(() =>
+        Assert.Throws<IncorrectIdException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
@@ -1057,8 +1050,7 @@ public class StudentTest
         var firstNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
 
     [Fact]
@@ -1076,8 +1068,7 @@ public class StudentTest
         var lastNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
 
     [Fact]
@@ -1095,8 +1086,7 @@ public class StudentTest
         var lastNameUp = faker.Name.FirstName() + "Up";
         var firstNameUp = faker.Name.FirstName() + "Up";
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
 
     [Theory]
@@ -1126,9 +1116,9 @@ public class StudentTest
 
         var teacher = new Teacher(teacherId, fioTeacher, studentAddress, phone, age);
 
-        IncorrectRangeException ex =
-            Assert.Throws<IncorrectRangeException>(() => teacher.UpdateAge(ageUp));
+        Assert.Throws<IncorrectRangeException>(() => teacher.UpdateAge(ageUp));
     }
+
     [Fact]
     public void CheckExceptionForUpdateZeroAgeTest()
     {
@@ -1153,7 +1143,6 @@ public class StudentTest
 
         var teacher = new Teacher(teacherId, fioTeacher, studentAddress, phone, age);
         const int ageUp = 0;
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => teacher.UpdateAge(ageUp));
+        Assert.Throws<NullReferenceException>(() => teacher.UpdateAge(ageUp));
     }
 }

@@ -49,7 +49,7 @@ public class TeacherTest
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+       Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Fio(lastName, firstName, middleName));
     }
 
@@ -65,7 +65,7 @@ public class TeacherTest
         var lastName = faker.Name.LastName();
         var middleName = faker.Name.FirstName();
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+       Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Fio(lastName, firstName, middleName));
     }
 
@@ -81,7 +81,7 @@ public class TeacherTest
         var lastName = faker.Name.LastName();
         var firstName = faker.Name.FirstName();
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+       Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Fio(lastName, firstName, middleName));
     }
 
@@ -107,7 +107,7 @@ public class TeacherTest
         const string phone = "+37377941321";
         const int age = 25;
 
-        IncorrectIdException ex = Assert.Throws<IncorrectIdException>(() =>
+       Assert.Throws<IncorrectIdException>(() =>
             new Teacher(teacherId, fioTeacher, teacherAddress, phone, age));
     }
 
@@ -124,7 +124,7 @@ public class TeacherTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+      Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Address(city, streetTeacher, houseNumber, apartmentNumber));
     }
 
@@ -141,7 +141,7 @@ public class TeacherTest
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+       Assert.Throws<IncorrectStringLengthException>(() =>
             new Person.Address(city, streetTeacher, houseNumber, apartmentNumber));
     }
 
@@ -156,7 +156,7 @@ public class TeacherTest
         var streetTeacher = faker.Address.StreetName();
         const int apartmentNumber = 5;
 
-        IncorrectRangeException ex = Assert.Throws<IncorrectRangeException>(() =>
+      Assert.Throws<IncorrectRangeException>(() =>
             new Person.Address(city, streetTeacher, houseNumber, apartmentNumber));
     }
 
@@ -175,8 +175,7 @@ public class TeacherTest
         var firstNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
 
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
 
     [Fact]
@@ -193,9 +192,8 @@ public class TeacherTest
         string firstNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
-
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        
+        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
 
     [Fact]
@@ -212,9 +210,8 @@ public class TeacherTest
         string middleNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
         var firstNameUp = faker.Name.FirstName() + "Up";
-
-        NullReferenceException ex =
-            Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        
+        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
 
     [Fact]
@@ -238,8 +235,6 @@ public class TeacherTest
 
         const string phone = "+37377941321";
         const int age = 25;
-        const string speciality = "doctor";
-        const int course = 4;
 
         var teacher = new Teacher(teacherId, fioTeacher, studentAddress, phone, age);
 
@@ -274,7 +269,7 @@ public class TeacherTest
 
         // fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp);
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
     [Theory]
@@ -297,7 +292,7 @@ public class TeacherTest
 
         // fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp);
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
     [Theory]
@@ -320,7 +315,7 @@ public class TeacherTest
 
         // fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp);
 
-        IncorrectStringLengthException ex = Assert.Throws<IncorrectStringLengthException>(() =>
+        Assert.Throws<IncorrectStringLengthException>(() =>
             fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
 }
