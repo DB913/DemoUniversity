@@ -72,13 +72,12 @@ public class StudentTest
     {
         var faker = new Faker("ru");
 
-        string cityStudent = null;
         var streetStudent = faker.Address.StreetName();
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
         Assert.Throws<NullReferenceException>(() =>
-            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(null, streetStudent, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -104,12 +103,11 @@ public class StudentTest
         var faker = new Faker("ru");
 
         var cityStudent = faker.Address.City();
-        string streetStudent = null;
         const int houseNumber = 45;
         const int apartmentNumber = 5;
 
         Assert.Throws<NullReferenceException>(() =>
-            new Address(cityStudent, streetStudent, houseNumber, apartmentNumber));
+            new Address(cityStudent, null, houseNumber, apartmentNumber));
     }
 
     [Theory]
@@ -342,28 +340,24 @@ public class StudentTest
     [Fact]
     public void CheckExceptionForNullLastNameStudentTest()
     {
-        var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
 
-        string lastName = null;
         var firstName = faker.Name.FirstName();
         var middleName = faker.Name.FirstName();
 
-        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new PersonName(null, firstName, middleName));
     }
 
     [Fact]
     public void CheckExceptionForNullFirstNameStudentTest()
     {
-        var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
 
         var lastName = faker.Name.FirstName();
-        ;
-        string firstName = null;
+
         var middleName = faker.Name.FirstName();
 
-        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, null, middleName));
     }
 
     [Fact]
@@ -374,9 +368,8 @@ public class StudentTest
         var lastName = faker.Name.FirstName();
 
         var firstName = faker.Name.FirstName();
-        string middleName = null;
 
-        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, firstName, middleName));
+        Assert.Throws<NullReferenceException>(() => new PersonName(lastName, firstName, null));
     }
 
     [Theory]
@@ -499,7 +492,7 @@ public class StudentTest
     }
 
     [Fact]
-    public void UpdateStudentAddressPositiveTest()
+    public void UpdateStudentCityPositiveTest()
     {
         var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
@@ -525,15 +518,108 @@ public class StudentTest
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
         var cityStudentUp = faker.Address.City() + "Up";
-        var streetStudentUp = faker.Address.StreetName() + "Up";
-        const int houseNumberUp = 45 + houseNumber;
-        const int apartmentNumberUp = 5 + apartmentNumber;
 
-        studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp);
+        studentAddress.UpdateCity(cityStudentUp);
 
         Assert.True(student.PersonAddress.City == cityStudentUp);
+    }
+
+    [Fact]
+    public void UpdateStudentStreetPositiveTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new PersonName(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        var streetStudentUp = faker.Address.City() + "Up";
+
+        studentAddress.UpdateStreet(streetStudentUp);
+
         Assert.True(student.PersonAddress.Street == streetStudentUp);
+    }
+
+    [Fact]
+    public void UpdateStudentHouseNumberPositiveTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new PersonName(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        const int houseNumberUp = 32;
+
+        studentAddress.UpdateHouseNumber(houseNumberUp);
+
         Assert.True(student.PersonAddress.HouseNumber == houseNumberUp);
+    }
+
+    [Fact]
+    public void UpdateStudentApartmentNumberPositiveTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new PersonName(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        const int apartmentNumberUp = 32;
+
+        studentAddress.UpdateApartmentNumber(apartmentNumberUp);
+
         Assert.True(student.PersonAddress.ApartmentNumber == apartmentNumberUp);
     }
 
@@ -553,12 +639,8 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var streetStudentUp = faker.Address.StreetName() + "Up";
-        const int houseNumberUp = 45 + houseNumber;
-        const int apartmentNumberUp = 5 + apartmentNumber;
-
         Assert.Throws<IncorrectStringLengthException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateCity(cityStudentUp));
     }
 
     [Fact]
@@ -573,13 +655,8 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        string cityStudentUp = null;
-        var streetStudentUp = faker.Address.StreetName() + "Up";
-        const int houseNumberUp = 45 + houseNumber;
-        const int apartmentNumberUp = 5 + apartmentNumber;
-
         Assert.Throws<NullReferenceException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateCity(null));
     }
 
     [Theory]
@@ -598,12 +675,8 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var cityStudentUp = faker.Address.City() + "Up";
-        const int houseNumberUp = 45 + houseNumber;
-        const int apartmentNumberUp = 5 + apartmentNumber;
-
         Assert.Throws<IncorrectStringLengthException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateStreet(streetStudentUp));
     }
 
     [Fact]
@@ -618,13 +691,8 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var cityStudentUp = faker.Address.City() + "Up";
-        string streetStudentUp = null;
-        const int houseNumberUp = 45 + houseNumber;
-        const int apartmentNumberUp = 5 + apartmentNumber;
-
         Assert.Throws<NullReferenceException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateStreet(null));
     }
 
     [Theory]
@@ -641,12 +709,8 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var cityStudentUp = faker.Address.City() + "Up";
-        var streetStudentUp = faker.Address.StreetName() + "Up";
-        const int apartmentNumberUp = 5 + apartmentNumber;
-
         Assert.Throws<IncorrectRangeException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateHouseNumber(houseNumberUp));
     }
 
     [Fact]
@@ -661,13 +725,10 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var cityStudentUp = faker.Address.City() + "Up";
-        var streetStudentUp = faker.Address.StreetName() + "Up";
         const int houseNumberUp = 0;
-        const int apartmentNumberUp = 5 + apartmentNumber;
 
         Assert.Throws<NullReferenceException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateHouseNumber(houseNumberUp));
     }
 
     [Theory]
@@ -684,12 +745,8 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var cityStudentUp = faker.Address.City() + "Up";
-        var streetStudentUp = faker.Address.StreetName() + "Up";
-        var houseNumberUp = 56;
-
         Assert.Throws<IncorrectRangeException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateApartmentNumber(apartmentNumberUp));
     }
 
     [Fact]
@@ -704,13 +761,10 @@ public class StudentTest
 
         var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
 
-        var cityStudentUp = faker.Address.City() + "Up";
-        var streetStudentUp = faker.Address.StreetName() + "Up";
-        const int houseNumberUp = 46;
         const int apartmentNumberUp = 0;
 
         Assert.Throws<NullReferenceException>(() =>
-            studentAddress.UpdateAddress(cityStudentUp, streetStudentUp, houseNumberUp, apartmentNumberUp));
+            studentAddress.UpdateApartmentNumber(apartmentNumberUp));
     }
 
     [Fact]
@@ -1046,11 +1100,10 @@ public class StudentTest
 
         var fioStudent = new PersonName(lastName, firstName, middleName);
 
-        string lastNameUp = null;
         var firstNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
 
-        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(null, firstNameUp, middleNameUp));
     }
 
     [Fact]
@@ -1064,11 +1117,10 @@ public class StudentTest
 
         var fioStudent = new PersonName(lastName, firstName, middleName);
 
-        string firstNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
 
-        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, null, middleNameUp));
     }
 
     [Fact]
@@ -1082,11 +1134,10 @@ public class StudentTest
 
         var fioStudent = new PersonName(lastName, firstName, middleName);
 
-        string middleNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
         var firstNameUp = faker.Name.FirstName() + "Up";
 
-        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, null));
     }
 
     [Theory]

@@ -171,11 +171,10 @@ public class TeacherTest
 
         var fioTeacher = new PersonName(lastName, firstName, middleName);
 
-        string lastNameUp = null;
         var firstNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
 
-        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(null, firstNameUp, middleNameUp));
     }
 
     [Fact]
@@ -189,11 +188,10 @@ public class TeacherTest
 
         var fioTeacher = new PersonName(lastName, firstName, middleName);
 
-        string firstNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
         var middleNameUp = faker.Name.FirstName() + "Up";
         
-        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, null, middleNameUp));
     }
 
     [Fact]
@@ -207,11 +205,10 @@ public class TeacherTest
 
         var fioTeacher = new PersonName(lastName, firstName, middleName);
 
-        string middleNameUp = null;
         var lastNameUp = faker.Name.FirstName() + "Up";
         var firstNameUp = faker.Name.FirstName() + "Up";
         
-        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioTeacher.UpdateFio(lastNameUp, firstNameUp, null));
     }
 
     [Fact]
@@ -312,9 +309,7 @@ public class TeacherTest
 
         var lastNameUp = faker.Name.FirstName() + "Up";
         var firstNameUp = faker.Name.FirstName() + "Up";
-
-        // fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp);
-
+        
         Assert.Throws<IncorrectStringLengthException>(() =>
             fioTeacher.UpdateFio(lastNameUp, firstNameUp, middleNameUp));
     }
