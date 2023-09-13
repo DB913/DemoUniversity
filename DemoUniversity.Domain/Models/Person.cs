@@ -33,7 +33,7 @@ public abstract class Person : BaseData<Guid>
     {
         if (age == 0)
         {
-            throw new NullReferenceException("Значение не может быть равным 0");
+            throw new ArgumentException("Значение не может быть равным 0");
         }
 
         if (age.CheckRange())
@@ -43,7 +43,7 @@ public abstract class Person : BaseData<Guid>
         else
         {
             throw new IncorrectRangeException(
-                $"Допустимый диапозон принимаемых значений от {16} до {150}");
+                "Допустимый диапозон принимаемых значений от 16 до 150");
         }
 
         ValidatePhoneNumber(phone);
@@ -62,7 +62,7 @@ public abstract class Person : BaseData<Guid>
     {
         if (age == 0)
         {
-            throw new NullReferenceException("Значение не может быть равным 0");
+            throw new ArgumentException("Значение не может быть равным 0");
         }
 
         if (age.CheckRange())
@@ -72,7 +72,7 @@ public abstract class Person : BaseData<Guid>
         else
         {
             throw new IncorrectRangeException(
-                $"Допустимый диапозон принимаемых значений от {16} до {150}");
+                "Допустимый диапозон принимаемых значений от 16 до 150");
         }
     }
 
@@ -96,7 +96,7 @@ public abstract class Person : BaseData<Guid>
     {
         if (phoneNumber == null)
         {
-            throw new NullReferenceException("Номер не может быть null");
+            throw new ArgumentException("Номер не может быть null");
         }
 
         if (!Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$"))

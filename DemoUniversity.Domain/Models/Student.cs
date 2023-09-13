@@ -28,15 +28,16 @@ public class Student : Person
     /// <param name="phone">Номер телефона</param>
     public Student(Guid id, PersonName fio, Address address, string phone,
         int age,
-        string speciality, int course) : base(id,fio, address, phone, age)
+        string speciality, int course) : base(id, fio, address, phone, age)
     {
         const int minValue = 1;
         const int maxValue = 6;
-        if (course==0)
+        if (course == 0)
         {
-            throw new NullReferenceException("Значение не может равным 0");
+            throw new ArgumentException("Значение не может равным 0");
         }
-        if (course.CheckRange(minValue,maxValue))
+
+        if (course.CheckRange(minValue, maxValue))
         {
             Course = course;
         }
@@ -45,13 +46,13 @@ public class Student : Person
             throw new IncorrectRangeException($"Допустимый диапозон принимаемых значений от {minValue} до {maxValue}");
         }
 
-        if (speciality.CheckStringLength(2,10))
+        if (speciality.CheckStringLength(2, 10))
         {
             Speciality = speciality;
         }
         else
         {
-            throw new IncorrectStringLengthException($"Длина должна быть от {2} до {10} символов");
+            throw new IncorrectStringLengthException("Длина должна быть от 2 до 10 символов");
         }
     }
 
@@ -61,19 +62,23 @@ public class Student : Person
     /// <param name="speciality">Новая специальность</param>
     public void UpdateStudentSpeciality(string speciality)
     {
-        if (speciality==null)
+        const int minValue = 2;
+        const int maxValue = 10;
+        if (speciality == null)
         {
-            throw new NullReferenceException(
+            throw new ArgumentException(
                 "Передаваемое значение не может быть null");
         }
-        if (speciality.CheckStringLength(2,10))
+
+        if (speciality.CheckStringLength(minValue, maxValue))
         {
             Speciality = speciality;
         }
         else
         {
-            throw new IncorrectStringLengthException($"Длина должна быть от {2} до {10} символов");
+            throw new IncorrectStringLengthException($"Длина должна быть от {minValue} до {maxValue} символов");
         }
+
         Speciality = speciality;
     }
 
@@ -83,17 +88,18 @@ public class Student : Person
     /// <param name="course">Обновленный курс</param>
     public void UpdateStudentCourse(int course)
     {
-        if (course==0)
+        if (course == 0)
         {
-            throw new NullReferenceException("Значение не может равным 0");
+            throw new ArgumentException("Значение не может равным 0");
         }
-        if (course.CheckRange(1,6))
+
+        if (course.CheckRange(1, 6))
         {
             Course = course;
         }
         else
         {
-            throw new IncorrectRangeException($"Допустимый диапозон принимаемых значений от {1} до {6}");
+            throw new IncorrectRangeException("Допустимый диапозон принимаемых значений от 1 до 6");
         }
     }
 }

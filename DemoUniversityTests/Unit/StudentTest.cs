@@ -257,7 +257,7 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 0;
 
-        Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<ArgumentException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
@@ -426,7 +426,7 @@ public class StudentTest
         const int course = 4;
         const int age = 0;
 
-        Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<ArgumentException>(() =>
             new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course));
     }
 
@@ -487,7 +487,7 @@ public class StudentTest
         const int age = 25;
         const string phoneNumber = null;
 
-        Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<ArgumentException>(() =>
             new Student(studentId, fioStudent, studentAddress, phoneNumber, age, speciality, course));
     }
 
@@ -928,7 +928,7 @@ public class StudentTest
 
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
-        Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<ArgumentException>(() =>
             student.UpdateStudentSpeciality(null));
     }
 
@@ -1057,7 +1057,7 @@ public class StudentTest
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
         course = 0;
-        Assert.Throws<NullReferenceException>(() =>
+        Assert.Throws<ArgumentException>(() =>
             student.UpdateStudentCourse(course));
     }
 
@@ -1193,7 +1193,6 @@ public class StudentTest
         const int age = 25;
 
         var teacher = new Teacher(teacherId, fioTeacher, studentAddress, phone, age);
-        const int ageUp = 0;
-        Assert.Throws<NullReferenceException>(() => teacher.UpdateAge(ageUp));
+        Assert.Throws<ArgumentException>(() => teacher.UpdateAge(0));
     }
 }
