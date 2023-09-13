@@ -78,26 +78,12 @@ public class PersonName
     }
 
     /// <summary>
-    /// Метод для обновления ФИО
+    /// Метод для обновления фамилии
     /// </summary>
     /// <param name="lastName">Фамилия</param>
-    /// <param name="firstName">Имя</param>
-    /// <param name="middleName">Отчество</param>
-    public void UpdateFio(string lastName, string firstName, string middleName)
+    public void UpdateLastName(string lastName)
     {
-        if (middleName == null)
-        {
-            throw new NullReferenceException(
-                "Передаваемое значение не может быть null");
-        }
-
         if (lastName == null)
-        {
-            throw new NullReferenceException(
-                "Передаваемое значение не может быть null");
-        }
-
-        if (firstName == null)
         {
             throw new NullReferenceException(
                 "Передаваемое значение не может быть null");
@@ -111,15 +97,18 @@ public class PersonName
         {
             throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
         }
+    }
 
-        if (middleName.CheckStringLength())
+    /// <summary>
+    /// Метод для обновления имени
+    /// </summary>
+    /// <param name="firstName">Имя</param>
+    public void UpdateFirstName(string firstName)
+    {
+        if (firstName == null)
         {
-            MiddleName = middleName;
-        }
-
-        else
-        {
-            throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+            throw new NullReferenceException(
+                "Передаваемое значение не может быть null");
         }
 
         if (firstName.CheckStringLength())
@@ -129,6 +118,28 @@ public class PersonName
         else
         {
             throw new IncorrectStringLengthException($"Длина должна быть от {2} до {60} символов");
+        }
+    }
+
+    /// <summary>
+    /// Метод для обновления отчества
+    /// </summary>
+    /// <param name="middleName">Отчество</param>
+    public void UpdateMiddleName(string middleName)
+    {
+        if (middleName == null)
+        {
+            throw new NullReferenceException(
+                "Передаваемое значение не может быть null");
+        }
+
+        if (middleName.CheckStringLength())
+        {
+            MiddleName = middleName;
+        }
+        else
+        {
+            throw new IncorrectStringLengthException("Длина должна быть от 2 до 60 символов");
         }
     }
 }

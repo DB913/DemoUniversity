@@ -769,7 +769,7 @@ public class StudentTest
     }
 
     [Fact]
-    public void UpdateStudentFioPositiveTest()
+    public void UpdateStudentLastNamePositiveTest()
     {
         var studentId = Guid.NewGuid();
         var faker = new Faker("ru");
@@ -795,13 +795,73 @@ public class StudentTest
         var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
 
         var lastNameUp = faker.Name.LastName() + "Up";
-        var firstNameUp = faker.Name.FirstName() + "Up";
-        var middleNameUp = faker.Name.FirstName() + "Up";
 
-        fioStudent.UpdateFio(lastNameUp, firstNameUp, middleNameUp);
+        fioStudent.UpdateLastName(lastNameUp);
 
         Assert.True(student.PersonFio.LastName == lastNameUp);
+    }
+    [Fact]
+    public void UpdateStudentFirstNamePositiveTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new PersonName(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        var firstNameUp = faker.Name.LastName() + "Up";
+
+        fioStudent.UpdateFirstName(firstNameUp);
+
         Assert.True(student.PersonFio.FirstName == firstNameUp);
+    }
+    [Fact]
+    public void UpdateStudentMiddleNamePositiveTest()
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new PersonName(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+
+        var middleNameUp = faker.Name.LastName() + "Up";
+
+        fioStudent.UpdateMiddleName(middleNameUp);
+
         Assert.True(student.PersonFio.MiddleName == middleNameUp);
     }
 
@@ -1138,10 +1198,7 @@ public class StudentTest
 
         var fioStudent = new PersonName(lastName, firstName, middleName);
 
-        var firstNameUp = faker.Name.FirstName() + "Up";
-        var middleNameUp = faker.Name.FirstName() + "Up";
-
-        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(null, firstNameUp, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateLastName(null));
     }
 
     [Fact]
@@ -1155,10 +1212,7 @@ public class StudentTest
 
         var fioStudent = new PersonName(lastName, firstName, middleName);
 
-        var lastNameUp = faker.Name.FirstName() + "Up";
-        var middleNameUp = faker.Name.FirstName() + "Up";
-
-        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, null, middleNameUp));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFirstName(null));
     }
 
     [Fact]
@@ -1172,10 +1226,7 @@ public class StudentTest
 
         var fioStudent = new PersonName(lastName, firstName, middleName);
 
-        var lastNameUp = faker.Name.FirstName() + "Up";
-        var firstNameUp = faker.Name.FirstName() + "Up";
-
-        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateFio(lastNameUp, firstNameUp, null));
+        Assert.Throws<NullReferenceException>(() => fioStudent.UpdateMiddleName(null));
     }
 
     [Theory]
