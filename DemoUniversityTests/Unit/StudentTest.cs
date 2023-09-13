@@ -437,6 +437,8 @@ public class StudentTest
     [InlineData("37377941456")]
     [InlineData("77941456")]
     [InlineData("077941456")]
+    [InlineData("+373779414")]
+
     public void CheckExceptionForInvalidPhoneNumberStudentTest(string phone)
     {
         var studentId = Guid.NewGuid();
@@ -485,10 +487,9 @@ public class StudentTest
         const string speciality = "doctor";
         const int course = 4;
         const int age = 25;
-        const string phoneNumber = null;
 
         Assert.Throws<ArgumentException>(() =>
-            new Student(studentId, fioStudent, studentAddress, phoneNumber, age, speciality, course));
+            new Student(studentId, fioStudent, studentAddress, null, age, speciality, course));
     }
 
     [Fact]
@@ -866,6 +867,43 @@ public class StudentTest
         student.UpdatePhoneNumber(phoneUp);
 
         Assert.True(student.Phone == phoneUp);
+    }
+    
+    [Theory]
+    [InlineData("")]
+    [InlineData("151")]
+    [InlineData("534534534")]
+    [InlineData("37377941456")]
+    [InlineData("77941456")]
+    [InlineData("077941456")]
+    [InlineData("+373779414")]
+    public void CheckExceptionForUpdatePhoneNumberTest(string phoneUp)
+    {
+        var studentId = Guid.NewGuid();
+        var faker = new Faker("ru");
+
+        var lastName = faker.Name.LastName();
+        var firstName = faker.Name.FirstName();
+        var middleName = faker.Name.FirstName();
+
+        var cityStudent = faker.Address.City();
+        var streetStudent = faker.Address.StreetName();
+        const int houseNumber = 45;
+        const int apartmentNumber = 5;
+
+        var studentAddress = new Address(cityStudent, streetStudent, houseNumber, apartmentNumber);
+
+        var fioStudent = new PersonName(lastName, firstName, middleName);
+
+        const string phone = "+37377941321";
+        const int age = 25;
+        const string speciality = "doctor";
+        const int course = 4;
+
+        var student = new Student(studentId, fioStudent, studentAddress, phone, age, speciality, course);
+        
+        Assert.Throws<IncorrectStringException>(() =>
+           student.UpdatePhoneNumber(phoneUp));
     }
 
     [Theory]

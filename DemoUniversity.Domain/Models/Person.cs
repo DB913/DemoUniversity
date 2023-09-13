@@ -99,7 +99,7 @@ public abstract class Person : BaseData<Guid>
             throw new ArgumentException("Номер не может быть null");
         }
 
-        if (!Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$"))
+        if (!Regex.IsMatch(phoneNumber, @"^\+[3,7,3]{3}[0-9]{8}$"))
         {
             throw new IncorrectStringException("Номер телефона не соответствует формату");
         }
