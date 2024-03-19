@@ -1,67 +1,105 @@
 ﻿using System.Text.RegularExpressions;
 using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Extensions;
+using DemoUniversity.Domain.Models.Helpers;
 
 namespace DemoUniversity.Domain.Models;
 
 public abstract class Person : BaseData<Guid>
 {
     /// <summary>
-    /// Фамилия
-    /// </summary>
-    /// <example>Иванов</example>
-    public string LastName { get; }
-
-    /// <summary>
-    /// Имя
-    /// </summary>
-    /// <example>Сергей</example>
-    public string FirstName { get; }
-
-    /// <summary>
-    /// Отчество
-    /// </summary>
-    /// <example>Петрович</example>
-    public string MiddleName { get; }
-
-    /// <summary>
-    /// Адрес
-    /// </summary>
-    /// <example>"str.25 oct. 100/100"</example>
-    public string Address { get; }
-
-    /// <summary>
     /// Возраст
     /// </summary>
     /// <example>21</example>
-    public int Age { get; }
+    public int Age { get; private set; }
 
     /// <summary>
     /// Номер телефона
     /// </summary>
     /// <example>+37377821213</example>
-    public string Phone { get; }
+    public string Phone { get; private set; }
 
-    protected Person(Guid id, string lastName, string firstName, string middleName, string address, string phone,
-        int age) : base(id)
+    /// <summary>
+    /// Адрес
+    /// </summary>
+    public Address PersonAddress { get; private set; }
+
+    /// <summary>
+    /// ФИО
+    /// </summary>
+    public PersonName PersonFio { get; private set; }
+
+    protected Person(Guid id, PersonName fio, Address address, string phone, int age) : base(id)
     {
-        lastName.ValidateLength();
-        firstName.ValidateLength();
-        middleName.ValidateLength();
-        address.ValidateLength(20, 150);
-        age.ValidateRange();
+        if (age == 0)
+        {
+            throw new ArgumentException("Значение не может быть равным 0");
+        }
+
+        if (age.CheckRange())
+        {
+            Age = age;
+        }
+        else
+        {
+            throw new IncorrectRangeException(
+                "Допустимый диапозон принимаемых значений от 16 до 150");
+        }
+
         ValidatePhoneNumber(phone);
-        LastName = lastName;
-        FirstName = firstName;
-        MiddleName = middleName;
-        Address = address;
+
+        PersonAddress = address;
         Phone = phone;
-        Age = age;
+
+        PersonFio = fio;
     }
 
+    /// <summary>
+    /// Метод для обновления возраста
+    /// </summary>
+    /// <param name="age">Возраст</param>
+    public void UpdateAge(int age)
+    {
+        if (age == 0)
+        {
+            throw new ArgumentException("Значение не может быть равным 0");
+        }
+
+        if (age.CheckRange())
+        {
+            Age = age;
+        }
+        else
+        {
+            throw new IncorrectRangeException(
+                "Допустимый диапозон принимаемых значений от 16 до 150");
+        }
+    }
+
+    /// <summary>
+    /// Метод для обновления номера телефона
+    /// </summary>
+    /// <param name="phone">Номер телефона</param>
+    public void UpdatePhoneNumber(string phone)
+    {
+        ValidatePhoneNumber(phone);
+        Phone = phone;
+    }
+
+    /// <summary>
+    /// Метод для валидации номера телефона
+    /// </summary>
+    /// <param name="phoneNumber"></param>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="IncorrectStringException"></exception>
     private static void ValidatePhoneNumber(string phoneNumber)
     {
-        if (!Regex.IsMatch(phoneNumber, @"^\+[0-9]{1,3}[0-9]{7,14}$"))
+        if (phoneNumber == null)
+        {
+            throw new ArgumentException("Номер не может быть null");
+        }
+
+        if (!Regex.IsMatch(phoneNumber, @"^\+[3,7,3]{3}[0-9]{8}$"))
         {
             throw new IncorrectStringException("Номер телефона не соответствует формату");
         }
