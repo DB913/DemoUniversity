@@ -3,7 +3,9 @@ using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Models.Helpers;
 
 namespace DemoUniversity.Domain.Models;
-
+/// <summary>
+/// Пользователь
+/// </summary>
 public abstract class Person : BaseData<Guid>
 {
     /// <summary>
