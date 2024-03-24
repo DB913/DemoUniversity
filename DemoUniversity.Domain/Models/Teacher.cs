@@ -1,15 +1,17 @@
-﻿namespace DemoUniversity.Domain.Models;
+﻿using DemoUniversity.Domain.Models.Helpers;
+
+namespace DemoUniversity.Domain.Models;
 
 public class Teacher : Person
 {
-    /// <summary>
-    /// Кафедра преподавателя
-    /// </summary>
-    private Department Department { get; set; }
-    /// <summary>
-    /// Дисциплина преподавателя
-    /// </summary>
-    private Discipline Discipline { get; set; }
+    // /// <summary>
+    // /// Кафедра преподавателя
+    // /// </summary>
+    // public Department Department { get; set; }
+    // /// <summary>
+    // /// Дисциплина преподавателя
+    // /// </summary>
+    // public Discipline Discipline { get; set; }
 
     /// <summary>
     /// Конструктор для валидации и присваивания значений полям учителя
@@ -23,10 +25,8 @@ public class Teacher : Person
     /// <param name="phone">Номер телефона</param>
     /// <param name="department">Кафедра</param>
     /// <param name="discipline">Дисциплина</param>
-    public Teacher(Guid id, string lastName, string firstName, string middleName, string address, string phone, int age,
-        Department department, Discipline discipline) : base(id, lastName, firstName, middleName, address, phone, age)
+    public Teacher(Guid id, PersonFio fio, Address address, string phone, int age) : base(id,fio, address, phone, age)
     {
-        Department = department;
-        Discipline = discipline;
+
     }
 }

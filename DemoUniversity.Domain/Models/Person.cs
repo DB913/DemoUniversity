@@ -1,6 +1,5 @@
 ﻿using System.Text.RegularExpressions;
 using DemoUniversity.Domain.Exceptions;
-using DemoUniversity.Domain.Extensions;
 using DemoUniversity.Domain.Models.Helpers;
 
 namespace DemoUniversity.Domain.Models;
@@ -8,10 +7,16 @@ namespace DemoUniversity.Domain.Models;
 public abstract class Person : BaseData<Guid>
 {
     /// <summary>
-    /// Возраст
+    /// Годы обучения / работы
     /// </summary>
-    /// <example>21</example>
-    public int Age { get; private set; }
+    /// <example>2024 - 2028</example>
+    public string YearsOfStudy { get; private set; }
+    
+    /// <summary>
+    /// Дата рождения
+    /// </summary>
+    /// <example>08 ноября 2002</example>
+    public string DateOfBirth{ get; private set; }
 
     /// <summary>
     /// Номер телефона
@@ -20,26 +25,41 @@ public abstract class Person : BaseData<Guid>
     public string Phone { get; private set; }
 
     /// <summary>
-    /// Адрес
+    /// Адрес проживания
     /// </summary>
     public Address PersonAddress { get; private set; }
 
     /// <summary>
     /// ФИО
     /// </summary>
-    public PersonName PersonFio { get; private set; }
+    public PersonFio PersonFio { get; private set; }
+    
+    /// <summary>
+    /// Номер курса
+    /// </summary>
+    public string Course { get; private set; }
+    
+    /// <summary>
+    /// Группа пользователя
+    /// </summary>
+    public Group Group { get; set; }
+    
+    /// <summary>
+    /// Зачетная книжка пользователя
+    /// </summary>
+    public RecordBook RecordBook { get; set; }
 
-    protected Person(Guid id, PersonName fio, Address address, string phone, int age) : base(id)
+    protected Person(Guid id, PersonFio fio, Address address, string phone, int age) : base(id)
     {
         if (age == 0)
         {
             throw new ArgumentException("Значение не может быть равным 0");
         }
 
-        if (age.CheckRange())
-        {
-            Age = age;
-        }
+        // if (age.CheckRange())
+        // {
+        //     Age = age;
+        // }
         else
         {
             throw new IncorrectRangeException(
@@ -50,31 +70,30 @@ public abstract class Person : BaseData<Guid>
 
         PersonAddress = address;
         Phone = phone;
-
         PersonFio = fio;
     }
 
-    /// <summary>
-    /// Метод для обновления возраста
-    /// </summary>
-    /// <param name="age">Возраст</param>
-    public void UpdateAge(int age)
-    {
-        if (age == 0)
-        {
-            throw new ArgumentException("Значение не может быть равным 0");
-        }
-
-        if (age.CheckRange())
-        {
-            Age = age;
-        }
-        else
-        {
-            throw new IncorrectRangeException(
-                "Допустимый диапозон принимаемых значений от 16 до 150");
-        }
-    }
+    // /// <summary>
+    // /// Метод для обновления возраста
+    // /// </summary>
+    // /// <param name="age">Возраст</param>
+    // public void UpdateAge(int age)
+    // {
+    //     if (age == 0)
+    //     {
+    //         throw new ArgumentException("Значение не может быть равным 0");
+    //     }
+    //
+    //     if (age.CheckRange())
+    //     {
+    //         Age = age;
+    //     }
+    //     else
+    //     {
+    //         throw new IncorrectRangeException(
+    //             "Допустимый диапозон принимаемых значений от 16 до 150");
+    //     }
+    // }
 
     /// <summary>
     /// Метод для обновления номера телефона

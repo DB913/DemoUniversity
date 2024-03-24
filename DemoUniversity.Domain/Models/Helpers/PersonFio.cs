@@ -3,7 +3,7 @@ using DemoUniversity.Domain.Extensions;
 
 namespace DemoUniversity.Domain.Models.Helpers;
 
-public class PersonName
+public class PersonFio
 {
     /// <summary>
     /// Фамилия
@@ -29,7 +29,7 @@ public class PersonName
     /// <param name="lastName">Фамилия</param>
     /// <param name="firstName">Имя</param>
     /// <param name="middleName">Отчество</param>
-    public PersonName(string lastName, string firstName, string middleName)
+    public PersonFio(string lastName, string firstName, string middleName)
     {
         if (middleName == null)
         {
