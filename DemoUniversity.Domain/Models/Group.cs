@@ -32,7 +32,26 @@ public class Group : BaseData<Guid>
     /// Специальность
     /// </summary>
     public Speciality Speciality { get; set; }
-    public Group(Guid id) : base(id)
+    /// <summary>
+    /// Конструктор для присвоения значений полям группы
+    /// </summary>
+    /// <param name="id">id группы</param>
+    /// <param name="name">название группы</param>
+    /// <param name="code">код группы</param>
+    /// <param name="students">список студентов группы</param>
+    /// <param name="disciplines">список дисциплин группы</param>
+    /// <param name="groupCurator">куратор группы</param>
+    /// <param name="schedule">расписание группы</param>
+    /// <param name="speciality">специальность группы</param>
+    public Group(string name, int code, List<Person> students, Person groupCurator, List<DisciplinesForGroup> disciplines,Schedule schedule,
+        Speciality speciality,Guid id) : base(id)
     {
+        Name = name;
+        Code = code;
+        Students = students;
+        GroupCurator = groupCurator;
+        Disciplines = disciplines;
+        Schedule = schedule;
+        Speciality = speciality;
     }
 }

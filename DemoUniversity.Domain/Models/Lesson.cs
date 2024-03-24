@@ -16,7 +16,15 @@ public class Lesson : BaseData<Guid>
     /// Тип занятия
     /// </summary>
     public TypeOfActivity TypeOfActivity{ get; set; }
-    public Lesson(Guid id) : base(id)
+    /// <summary>
+    /// Конструткор присвоения значений полям уроков
+    /// </summary>
+    /// <param name="name">Название урока</param>
+    /// <param name="grade">Оценка урока</param>
+    /// <param name="id">id урока</param>
+    public Lesson(string name, int grade, Guid id) : base(id)
     {
+        Name = name;
+        Grade = grade;
     }
 }

@@ -12,7 +12,16 @@ public class Direction : BaseData<Guid>
     /// Код направления
     /// </summary>
     public int Code { get; set; }
-    public Direction(Guid id) : base(id)
+
+    /// <summary>
+    /// Конструктор для присвоения значений полям
+    /// </summary>
+     /// <param name="id">id</param>
+     /// <param name="name">название направления</param>
+     /// <param name="age">код направления</param>
+    public Direction(string name, int code, Guid id) : base(id)
     {
+        Name = name;
+        Code = code;
     }
 }

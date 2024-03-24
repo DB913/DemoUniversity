@@ -12,7 +12,15 @@ public class DisciplinesForGroup : BaseData<int>
     /// id группы
     /// </summary>
     public Guid GroupId { get; set; }
-    public DisciplinesForGroup(int id) : base(id)
+    /// <summary>
+    /// Конструктор для присвоения значений полям
+    /// </summary>
+    /// <param name="id">id дисциплины в соответствии с группой</param>
+    /// <param name="subjectId">id предмета</param>
+    /// <param name="groupId">id группы</param>
+    public DisciplinesForGroup(Guid subjectId, Guid groupId,int id) : base(id)
     {
+        SubjectId = subjectId;
+        GroupId = groupId;
     }
 }

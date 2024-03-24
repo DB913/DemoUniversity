@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Runtime.InteropServices.JavaScript;
+using System.Text.RegularExpressions;
 using DemoUniversity.Domain.Exceptions;
 using DemoUniversity.Domain.Models.Helpers;
 
@@ -12,13 +13,13 @@ public abstract class Person : BaseData<Guid>
     /// Годы обучения / работы
     /// </summary>
     /// <example>2024 - 2028</example>
-    public string YearsOfStudy { get; private set; }
+    public DateTime YearsOfStudy { get; private set; }
     
     /// <summary>
     /// Дата рождения
     /// </summary>
     /// <example>08 ноября 2002</example>
-    public string DateOfBirth{ get; private set; }
+    public DateTime DateOfBirth{ get; private set; }
 
     /// <summary>
     /// Номер телефона
@@ -50,29 +51,37 @@ public abstract class Person : BaseData<Guid>
     /// Зачетная книжка пользователя
     /// </summary>
     public RecordBook RecordBook { get; set; }
-
-    protected Person(Guid id, PersonFio fio, Address address, string phone, int age) : base(id)
+    /// <summary>
+    /// Конструктор присвоения значений для пользователя
+    /// </summary>
+    /// <param name="id">id пользователя</param>
+    /// <param name="fio">ФИО пользователя</param>
+    /// <param name="personAddress">Адресс проживания</param>
+    /// <param name="phone">Мобильный номер телефона</param>
+    /// <param name="yearsOfStudy">Годы обучения или работы пользователя</param>
+    /// <param name="dateOfBirth">Дата рождения</param>
+    /// <param name="course">курс</param>
+    /// <param name="group">группа</param>
+    /// <param name="recordBook">зачетная книжка</param>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="IncorrectRangeException"></exception>
+    protected Person(Guid id, PersonFio fio, Address personAddress, string phone, DateTime yearsOfStudy, DateTime dateOfBirth, 
+        string course, Group group, RecordBook recordBook) : base(id)
     {
-        if (age == 0)
-        {
-            throw new ArgumentException("Значение не может быть равным 0");
-        }
-
-        // if (age.CheckRange())
-        // {
-        //     Age = age;
-        // }
-        else
-        {
-            throw new IncorrectRangeException(
-                "Допустимый диапозон принимаемых значений от 16 до 150");
-        }
-
+        if (yearsOfStudy.Year < DateTime.Now.Year) 
+            throw new IncorrectRangeException("Год не должен быть меньше текушего");
+        
+        YearsOfStudy = yearsOfStudy;
+        
         ValidatePhoneNumber(phone);
 
-        PersonAddress = address;
+        PersonAddress = personAddress;
         Phone = phone;
         PersonFio = fio;
+        DateOfBirth = dateOfBirth;
+        Course = course;
+        Group = group;
+        RecordBook = recordBook;
     }
 
     // /// <summary>
